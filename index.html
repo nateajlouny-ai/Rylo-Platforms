@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rylo Platforms — Booked Appointments for Real Estate Agents</title>
+  <meta name="description" content="Rylo Platforms delivers fully qualified, booked appointments directly to your calendar. No retainers, no monthly fees — just results. $150-$300 per appointment.">
+  <meta name="keywords" content="real estate leads, booked appointments, real estate agent lead generation, qualified buyer appointments, seller appointments">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Rylo Platforms — Booked Appointments for Real Estate Agents">
+  <meta property="og:description" content="Stop chasing leads. We deliver fully qualified, booked appointments directly to your calendar. Pay only for results.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ryloplatforms.com">
+  <meta property="og:image" content="https://ryloplatforms.com/og-image.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Rylo Platforms — Booked Appointments for Real Estate Agents">
+  <meta name="twitter:description" content="Stop chasing leads. We deliver fully qualified, booked appointments directly to your calendar.">
+
+  <!-- Fonts: Outfit (headings + body) + Space Mono (accents) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================
+       CSS CUSTOM PROPERTIES
+       ============================================ */
+    :root {
+      --slate-blue: #5B7C99;
+      --slate-blue-light: #6B8CAE;
+      --accent-blue: #4A90E2;
+      --dark-slate: #2C3E50;
+      --charcoal: #333D47;
+      --gray-medium: #B4C4D1;
+      --gray-light: #E8EDF2;
+      --bg-off-white: #F7F9FB;
+      --bg-white: #FFFFFF;
+
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Outfit', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+
+      --shadow-sm: 0 2px 8px rgba(43, 62, 80, 0.06);
+      --shadow-md: 0 8px 30px rgba(43, 62, 80, 0.1);
+      --shadow-lg: 0 20px 60px rgba(43, 62, 80, 0.12);
+      --shadow-glow: 0 0 40px rgba(74, 144, 226, 0.2);
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+
+      --max-width: 1400px;
+      --nav-height: 72px;
+    }
+
+    /* ============================================
+       RESET & BASE STYLES
+       ============================================ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      color: var(--charcoal);
+      background: var(--bg-off-white);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.25s ease;
+    }
+
+    ul { list-style: none; }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      line-height: 1.15;
+      color: var(--dark-slate);
+    }
+
+    /* ============================================
+       UTILITY CLASSES
+       ============================================ */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--slate-blue), var(--accent-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Scroll reveal animation base */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ============================================
+       CTA BUTTONS
+       ============================================ */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem 2.25rem;
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      background: linear-gradient(135deg, var(--slate-blue), var(--accent-blue));
+      border: none;
+      border-radius: 60px;
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.3s ease;
+      box-shadow: 0 4px 20px rgba(74, 144, 226, 0.3);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--accent-blue), var(--slate-blue));
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      border-radius: inherit;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(74, 144, 226, 0.4);
+    }
+
+    .btn-primary:hover::before {
+      opacity: 1;
+    }
+
+    .btn-primary span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-primary svg {
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .btn-primary--lg {
+      padding: 1.2rem 3rem;
+      font-size: 1.125rem;
+    }
+
+    .btn-primary--xl {
+      padding: 1.4rem 3.5rem;
+      font-size: 1.2rem;
+      letter-spacing: 0.01em;
+    }
+
+    /* Subtle pulse on hero CTA */
+    @keyframes ctaPulse {
+      0%, 100% { box-shadow: 0 4px 20px rgba(74, 144, 226, 0.3); }
+      50% { box-shadow: 0 4px 40px rgba(74, 144, 226, 0.5); }
+    }
+
+    .btn-pulse {
+      animation: ctaPulse 3s ease-in-out infinite;
+    }
+
+    .btn-pulse:hover {
+      animation: none;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--slate-blue);
+      background: transparent;
+      border: 2px solid var(--slate-blue);
+      border-radius: 60px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      background: var(--slate-blue);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(91, 124, 153, 0.25);
+    }
+
+    /* ============================================
+       1. NAVIGATION
+       ============================================ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      background: rgba(247, 249, 251, 0.8);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(180, 196, 209, 0.2);
+      transition: box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    .nav.scrolled {
+      background: rgba(247, 249, 251, 0.95);
+      box-shadow: 0 2px 20px rgba(43, 62, 80, 0.08);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Logo placeholder: 180x50 */
+    .nav__logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .nav__logo-placeholder {
+      width: 180px;
+      height: 50px;
+      border: 2px dashed var(--gray-medium);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--gray-medium);
+      background: rgba(232, 237, 242, 0.5);
+    }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .nav__link {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      position: relative;
+      padding: 0.25rem 0;
+    }
+
+    .nav__link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--slate-blue), var(--accent-blue));
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
+    .nav__link:hover::after {
+      width: 100%;
+    }
+
+    .nav__cta {
+      padding: 0.7rem 1.6rem;
+      font-size: 0.9rem;
+    }
+
+    /* Mobile hamburger */
+    .nav__hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+      z-index: 1010;
+    }
+
+    .nav__hamburger-line {
+      width: 26px;
+      height: 2.5px;
+      background: var(--dark-slate);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .nav__hamburger.active .nav__hamburger-line:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5.5px);
+    }
+    .nav__hamburger.active .nav__hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+    .nav__hamburger.active .nav__hamburger-line:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5.5px);
+    }
+
+    /* Mobile menu */
+    .nav__mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(247, 249, 251, 0.98);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+
+    .nav__mobile-menu.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .nav__mobile-menu a {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--dark-slate);
+    }
+
+    /* ============================================
+       2. HERO SECTION
+       ============================================ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: calc(var(--nav-height) + 3rem);
+      padding-bottom: 4rem;
+      overflow: hidden;
+      background: var(--bg-off-white);
+    }
+
+    /* Gradient mesh background */
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .hero__bg-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.35;
+    }
+
+    .hero__bg-orb--1 {
+      width: 600px;
+      height: 600px;
+      background: var(--slate-blue);
+      top: -200px;
+      right: -100px;
+      animation: orbFloat1 20s ease-in-out infinite;
+    }
+
+    .hero__bg-orb--2 {
+      width: 500px;
+      height: 500px;
+      background: var(--accent-blue);
+      bottom: -150px;
+      left: -100px;
+      animation: orbFloat2 25s ease-in-out infinite;
+    }
+
+    .hero__bg-orb--3 {
+      width: 300px;
+      height: 300px;
+      background: var(--gray-medium);
+      top: 40%;
+      left: 50%;
+      animation: orbFloat3 18s ease-in-out infinite;
+    }
+
+    @keyframes orbFloat1 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(-40px, 30px) scale(1.05); }
+      66% { transform: translate(20px, -20px) scale(0.95); }
+    }
+
+    @keyframes orbFloat2 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -40px) scale(1.1); }
+      66% { transform: translate(-20px, 20px) scale(0.9); }
+    }
+
+    @keyframes orbFloat3 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-50px, -30px) scale(1.15); }
+    }
+
+    /* Subtle grid pattern overlay */
+    .hero__bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(91, 124, 153, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(91, 124, 153, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero__inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero__content {
+      max-width: 640px;
+    }
+
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem 0.4rem 0.5rem;
+      background: rgba(91, 124, 153, 0.08);
+      border: 1px solid rgba(91, 124, 153, 0.15);
+      border-radius: 60px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--slate-blue);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero__badge-dot {
+      width: 8px;
+      height: 8px;
+      background: #34D399;
+      border-radius: 50%;
+      animation: dotPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes dotPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero__heading {
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.08;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.03em;
+    }
+
+    .hero__subheading {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      line-height: 1.7;
+      margin-bottom: 2.25rem;
+      max-width: 520px;
+      opacity: 0.85;
+    }
+
+    .hero__ctas {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Stats dashboard */
+    .hero__stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(232, 237, 242, 0.8);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.35s ease,
+                  border-color 0.35s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(91, 124, 153, 0.2);
+    }
+
+    .stat-card__icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.85rem;
+      background: linear-gradient(135deg, rgba(91, 124, 153, 0.1), rgba(74, 144, 226, 0.1));
+    }
+
+    .stat-card__icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--slate-blue);
+    }
+
+    .stat-card__label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--slate-blue);
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-card__value {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--dark-slate);
+      line-height: 1.4;
+    }
+
+    /* ============================================
+       SECTION SHARED STYLES
+       ============================================ */
+    .section {
+      padding: 6rem 0;
+    }
+
+    .section--alt {
+      background: var(--bg-white);
+    }
+
+    .section__header {
+      text-align: center;
+      margin-bottom: 4rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section__label {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--slate-blue);
+      margin-bottom: 1rem;
+      padding: 0.35rem 1rem;
+      background: rgba(91, 124, 153, 0.07);
+      border-radius: 60px;
+    }
+
+    .section__title {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .section__subtitle {
+      font-size: 1.1rem;
+      color: var(--charcoal);
+      opacity: 0.75;
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       3. HOW IT WORKS
+       ============================================ */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .step-card {
+      position: relative;
+      background: var(--bg-white);
+      border: 1px solid var(--gray-light);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.4s ease,
+                  border-color 0.4s ease;
+    }
+
+    .step-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(91, 124, 153, 0.25);
+    }
+
+    .step-card__number {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+      background: rgba(74, 144, 226, 0.08);
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .step-card__icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      background: linear-gradient(135deg, rgba(91, 124, 153, 0.08), rgba(74, 144, 226, 0.08));
+    }
+
+    .step-card__icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: var(--slate-blue);
+    }
+
+    .step-card__title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--dark-slate);
+    }
+
+    .step-card__desc {
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      opacity: 0.8;
+      line-height: 1.7;
+    }
+
+    /* Connector lines between steps (desktop only) */
+    .steps__connector {
+      display: none;
+    }
+
+    .section-cta {
+      text-align: center;
+      margin-top: 3.5rem;
+    }
+
+    /* ============================================
+       4. PRICING SECTION
+       ============================================ */
+    .pricing-card {
+      max-width: 720px;
+      margin: 0 auto;
+      background: var(--bg-white);
+      border: 1px solid var(--gray-light);
+      border-radius: var(--radius-xl);
+      padding: 3.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 0.4s ease;
+    }
+
+    .pricing-card:hover {
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Decorative gradient strip at top */
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--slate-blue), var(--accent-blue));
+    }
+
+    .pricing-card__amount {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-card__per {
+      font-size: 1.1rem;
+      color: var(--charcoal);
+      opacity: 0.7;
+      margin-bottom: 0.75rem;
+    }
+
+    .pricing-card__note {
+      font-size: 0.9rem;
+      color: var(--charcoal);
+      opacity: 0.6;
+      margin-bottom: 2.5rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.65;
+    }
+
+    .pricing-card__divider {
+      width: 60px;
+      height: 2px;
+      background: var(--gray-light);
+      border: none;
+      margin: 0 auto 2.5rem;
+    }
+
+    .pricing-card__features {
+      text-align: left;
+      max-width: 480px;
+      margin: 0 auto 2.5rem;
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .pricing-card__feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      color: var(--charcoal);
+    }
+
+    .pricing-card__check {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: rgba(52, 211, 153, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .pricing-card__check svg {
+      width: 14px;
+      height: 14px;
+      stroke: #34D399;
+      stroke-width: 3;
+    }
+
+    /* ============================================
+       5. RESULTS / TESTIMONIALS
+       ============================================ */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .testimonial-card {
+      background: var(--bg-white);
+      border: 1px solid var(--gray-light);
+      border-left: 4px solid var(--slate-blue);
+      border-radius: var(--radius-md);
+      padding: 2rem 2rem 1.75rem;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.35s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .testimonial-card__stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-card__stars svg {
+      width: 16px;
+      height: 16px;
+      fill: #F59E0B;
+    }
+
+    .testimonial-card__quote {
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--charcoal);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+      opacity: 0.9;
+    }
+
+    .testimonial-card__author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .testimonial-card__avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--slate-blue), var(--accent-blue));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .testimonial-card__name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--dark-slate);
+    }
+
+    .testimonial-card__title {
+      font-size: 0.8rem;
+      color: var(--charcoal);
+      opacity: 0.6;
+    }
+
+    /* ============================================
+       6. FINAL CTA
+       ============================================ */
+    .final-cta {
+      background: linear-gradient(135deg, var(--dark-slate), #1a2a3a);
+      padding: 6rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 500px;
+      height: 500px;
+      background: var(--accent-blue);
+      border-radius: 50%;
+      filter: blur(150px);
+      opacity: 0.15;
+    }
+
+    .final-cta::after {
+      content: '';
+      position: absolute;
+      bottom: -200px;
+      left: -200px;
+      width: 500px;
+      height: 500px;
+      background: var(--slate-blue);
+      border-radius: 50%;
+      filter: blur(150px);
+      opacity: 0.12;
+    }
+
+    .final-cta__inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .final-cta__heading {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .final-cta__subheading {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .final-cta .btn-primary {
+      box-shadow: 0 4px 30px rgba(74, 144, 226, 0.4);
+    }
+
+    .final-cta .btn-primary:hover {
+      box-shadow: 0 8px 50px rgba(74, 144, 226, 0.5);
+    }
+
+    /* ============================================
+       7. FOOTER
+       ============================================ */
+    .footer {
+      padding: 2.5rem 0;
+      background: var(--dark-slate);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer__copy {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .footer__links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer__link {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.45);
+      transition: color 0.25s ease;
+    }
+
+    .footer__link:hover {
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    /* ============================================
+       RESPONSIVE DESIGN
+       ============================================ */
+
+    /* Tablet landscape / small desktop */
+    @media (max-width: 1024px) {
+      .hero__inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+      }
+
+      .hero__content {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .hero__subheading {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero__ctas {
+        justify-content: center;
+      }
+
+      .hero__stats {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .steps {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+      }
+    }
+
+    /* Tablet portrait */
+    @media (max-width: 768px) {
+      :root {
+        --nav-height: 64px;
+      }
+
+      .section {
+        padding: 4rem 0;
+      }
+
+      .section__header {
+        margin-bottom: 3rem;
+      }
+
+      .nav__links {
+        display: none;
+      }
+
+      .nav__hamburger {
+        display: flex;
+      }
+
+      .nav__mobile-menu {
+        display: flex;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+        max-width: 520px;
+        margin: 0 auto;
+      }
+
+      .pricing-card {
+        padding: 2.5rem 2rem;
+      }
+
+      .hero__stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .final-cta {
+        padding: 4rem 0;
+      }
+
+      .footer__inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 1.25rem;
+      }
+
+      .hero {
+        padding-top: calc(var(--nav-height) + 2rem);
+        min-height: auto;
+        padding-bottom: 3rem;
+      }
+
+      .hero__heading {
+        font-size: 2.2rem;
+      }
+
+      .hero__subheading {
+        font-size: 1.05rem;
+      }
+
+      .hero__stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .hero__ctas {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .hero__ctas .btn-primary,
+      .hero__ctas .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .btn-primary--lg,
+      .btn-primary--xl {
+        padding: 1.1rem 2rem;
+        font-size: 1rem;
+      }
+
+      .stat-card {
+        padding: 1.25rem;
+      }
+
+      .step-card {
+        padding: 2rem 1.5rem;
+      }
+
+      .pricing-card {
+        padding: 2rem 1.5rem;
+      }
+
+      .section__title {
+        font-size: 1.75rem;
+      }
+
+      .testimonial-card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       1. NAVIGATION
+       ========================================== -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="#" class="nav__logo" aria-label="Rylo Platforms home">
+        <!-- LOGO PLACEHOLDER: Replace with actual logo image (180px × 50px) -->
+        <div class="nav__logo-placeholder" role="img" aria-label="Rylo Platforms logo placeholder">
+          LOGO 180×50
+        </div>
+      </a>
+
+      <div class="nav__links">
+        <a href="#how-it-works" class="nav__link">How It Works</a>
+        <a href="#pricing" class="nav__link">Pricing</a>
+        <a href="#results" class="nav__link">Results</a>
+        <a href="#book-call" class="btn-primary nav__cta" aria-label="Book a call with Rylo Platforms">
+          <span>Book a Call</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <button class="nav__hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span class="nav__hamburger-line"></span>
+        <span class="nav__hamburger-line"></span>
+        <span class="nav__hamburger-line"></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu overlay -->
+    <div class="nav__mobile-menu" aria-hidden="true">
+      <a href="#how-it-works" class="nav__mobile-link">How It Works</a>
+      <a href="#pricing" class="nav__mobile-link">Pricing</a>
+      <a href="#results" class="nav__mobile-link">Results</a>
+      <a href="#book-call" class="btn-primary btn-primary--lg" style="margin-top: 1rem;">
+        <span>Book a Call</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ==========================================
+       2. HERO SECTION
+       ========================================== -->
+  <section class="hero" id="hero">
+    <!-- Animated background orbs -->
+    <div class="hero__bg" aria-hidden="true">
+      <div class="hero__bg-orb hero__bg-orb--1"></div>
+      <div class="hero__bg-orb hero__bg-orb--2"></div>
+      <div class="hero__bg-orb hero__bg-orb--3"></div>
+    </div>
+
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__content">
+          <div class="hero__badge reveal">
+            <span class="hero__badge-dot" aria-hidden="true"></span>
+            Performance-Based Lead Generation
+          </div>
+
+          <h1 class="hero__heading reveal reveal-delay-1">
+            Stop Chasing Leads.<br>
+            Start <span class="gradient-text">Closing Deals.</span>
+          </h1>
+
+          <p class="hero__subheading reveal reveal-delay-2">
+            We handle everything from lead generation to appointment booking. You just show up and close the deal. No retainers. No monthly fees. Pure performance.
+          </p>
+
+          <div class="hero__ctas reveal reveal-delay-3">
+            <a href="#book-call" class="btn-primary btn-primary--lg btn-pulse" aria-label="Book your strategy call">
+              <span>Book Your Strategy Call</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#how-it-works" class="btn-secondary" aria-label="See how it works">
+              <span>See How It Works</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero__stats">
+          <div class="stat-card reveal reveal-delay-1">
+            <div class="stat-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div class="stat-card__label">Verification</div>
+            <div class="stat-card__value">100% Qualified</div>
+          </div>
+
+          <div class="stat-card reveal reveal-delay-2">
+            <div class="stat-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="stat-card__label">Retainer</div>
+            <div class="stat-card__value">$0 Upfront</div>
+          </div>
+
+          <div class="stat-card reveal reveal-delay-3">
+            <div class="stat-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="stat-card__label">Exclusivity</div>
+            <div class="stat-card__value">Never Shared</div>
+          </div>
+
+          <div class="stat-card reveal reveal-delay-4">
+            <div class="stat-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="stat-card__label">Processing</div>
+            <div class="stat-card__value">24/7 Active</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       3. HOW IT WORKS
+       ========================================== -->
+  <section class="section section--alt" id="how-it-works">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__label">The Process</span>
+        <h2 class="section__title">How It Works</h2>
+        <p class="section__subtitle">Three simple steps between you and a calendar full of qualified appointments.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step-card reveal reveal-delay-1">
+          <div class="step-card__number" aria-hidden="true">01</div>
+          <div class="step-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </div>
+          <h3 class="step-card__title">We Generate High-Intent Leads</h3>
+          <p class="step-card__desc">Our proprietary marketing system attracts motivated buyers and sellers actively searching for real estate services in your market.</p>
+        </div>
+
+        <div class="step-card reveal reveal-delay-2">
+          <div class="step-card__number" aria-hidden="true">02</div>
+          <div class="step-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h3 class="step-card__title">We Qualify &amp; Book the Appointment</h3>
+          <p class="step-card__desc">Every lead goes through a rigorous qualification process. Only serious, verified prospects make it onto your calendar.</p>
+        </div>
+
+        <div class="step-card reveal reveal-delay-3">
+          <div class="step-card__number" aria-hidden="true">03</div>
+          <div class="step-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
+          </div>
+          <h3 class="step-card__title">You Show Up &amp; Close</h3>
+          <p class="step-card__desc">Arrive to pre-qualified appointments. No cold calling. No follow-up emails. Just high-conversion conversations with motivated prospects.</p>
+        </div>
+      </div>
+
+      <!-- Mid-section CTA -->
+      <div class="section-cta reveal">
+        <a href="#book-call" class="btn-primary btn-primary--lg" aria-label="Get started with Rylo Platforms">
+          <span>Get Started Today</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       4. PRICING
+       ========================================== -->
+  <section class="section" id="pricing">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__label">Pricing</span>
+        <h2 class="section__title">Simple, Performance-Based Pricing</h2>
+        <p class="section__subtitle">Only pay for results. No contracts. No retainers. Just qualified appointments.</p>
+      </div>
+
+      <div class="pricing-card reveal">
+        <div class="pricing-card__amount">
+          <span class="gradient-text">$150 – $300</span>
+        </div>
+        <div class="pricing-card__per">per booked appointment</div>
+        <p class="pricing-card__note">Pricing varies based on your market, lead quality requirements, and appointment volume. We'll discuss the exact rate on your strategy call.</p>
+
+        <hr class="pricing-card__divider">
+
+        <div class="pricing-card__features">
+          <div class="pricing-card__feature">
+            <div class="pricing-card__check" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span>Fully qualified buyer or seller appointments</span>
+          </div>
+          <div class="pricing-card__feature">
+            <div class="pricing-card__check" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span>Exclusive to you — never shared with other agents</span>
+          </div>
+          <div class="pricing-card__feature">
+            <div class="pricing-card__check" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span>Pre-screened and verified prospects</span>
+          </div>
+          <div class="pricing-card__feature">
+            <div class="pricing-card__check" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span>Scheduled at your convenience</span>
+          </div>
+          <div class="pricing-card__feature">
+            <div class="pricing-card__check" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span>24/7 lead processing and qualification</span>
+          </div>
+          <div class="pricing-card__feature">
+            <div class="pricing-card__check" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span>Only pay when the appointment is booked and confirmed</span>
+          </div>
+          <div class="pricing-card__feature">
+            <div class="pricing-card__check" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span>No setup fees, retainers, or monthly charges</span>
+          </div>
+        </div>
+
+        <a href="#book-call" class="btn-primary btn-primary--lg" aria-label="Book a call to discuss your rate">
+          <span>Book a Call to Discuss Your Rate</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       5. RESULTS / TESTIMONIALS
+       ========================================== -->
+  <section class="section section--alt" id="results">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__label">Results</span>
+        <h2 class="section__title">Real Results from Real Agents</h2>
+        <p class="section__subtitle">See how Rylo Platforms is transforming businesses across the country.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="testimonial-card__stars" aria-label="5 star rating">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-card__quote">"I went from spending 3 hours a day on lead follow-up to just showing up to qualified appointments. My close rate has never been higher."</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar" aria-hidden="true">SM</div>
+            <div>
+              <div class="testimonial-card__name">Sarah Mitchell</div>
+              <div class="testimonial-card__title">Luxury Realtor, Austin TX</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="testimonial-card__stars" aria-label="5 star rating">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-card__quote">"These appointments are actually qualified. I'm not wasting time on tire-kickers anymore. This is exactly what I needed to scale."</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar" aria-hidden="true">MC</div>
+            <div>
+              <div class="testimonial-card__name">Marcus Chen</div>
+              <div class="testimonial-card__title">Real Estate Team Leader, San Diego CA</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card reveal reveal-delay-3">
+          <div class="testimonial-card__stars" aria-label="5 star rating">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-card__quote">"Within the first month, I closed 2 deals from Rylo appointments. The ROI speaks for itself. Game-changer for serious agents."</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar" aria-hidden="true">JR</div>
+            <div>
+              <div class="testimonial-card__name">Jennifer Rodriguez</div>
+              <div class="testimonial-card__title">Top Producer, Miami FL</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 4 -->
+        <div class="testimonial-card reveal reveal-delay-4">
+          <div class="testimonial-card__stars" aria-label="5 star rating">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-card__quote">"I was skeptical at first, but the quality exceeded my expectations. Every single appointment showed up and was genuinely interested."</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar" aria-hidden="true">DT</div>
+            <div>
+              <div class="testimonial-card__name">David Thompson</div>
+              <div class="testimonial-card__title">Independent Broker, Denver CO</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       6. FINAL CTA
+       ========================================== -->
+  <section class="final-cta" id="book-call">
+    <div class="container">
+      <div class="final-cta__inner">
+        <h2 class="final-cta__heading reveal">
+          Ready to Fill Your Calendar with Qualified Appointments?
+        </h2>
+        <p class="final-cta__subheading reveal reveal-delay-1">
+          Book a strategy call with our team. No pressure, just a conversation about how we can help you grow. We'll discuss your market, goals, and pricing.
+        </p>
+        <div class="reveal reveal-delay-2">
+          <a href="#book-call" class="btn-primary btn-primary--xl btn-pulse" aria-label="Book your strategy call now">
+            <span>Book Your Strategy Call Now</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       7. FOOTER
+       ========================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <p class="footer__copy">&copy; 2024 Rylo Platforms. All rights reserved.</p>
+        <div class="footer__links">
+          <a href="#" class="footer__link">Privacy Policy</a>
+          <a href="#" class="footer__link">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       JAVASCRIPT
+       ========================================== -->
+  <script>
+    (function() {
+      'use strict';
+
+      /* ---- Nav scroll effect ---- */
+      var nav = document.querySelector('.nav');
+      var scrollThreshold = 20;
+
+      function onScroll() {
+        if (window.scrollY > scrollThreshold) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      /* ---- Mobile menu toggle ---- */
+      var hamburger = document.querySelector('.nav__hamburger');
+      var mobileMenu = document.querySelector('.nav__mobile-menu');
+      var mobileLinks = mobileMenu.querySelectorAll('a');
+
+      function toggleMenu() {
+        var isOpen = mobileMenu.classList.contains('open');
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('open');
+        mobileMenu.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
+        hamburger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+        document.body.style.overflow = isOpen ? '' : 'hidden';
+      }
+
+      hamburger.addEventListener('click', toggleMenu);
+
+      mobileLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          if (mobileMenu.classList.contains('open')) {
+            toggleMenu();
+          }
+        });
+      });
+
+      /* ---- Smooth scroll for anchor links ---- */
+      document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+          var targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          var target = document.querySelector(targetId);
+          if (target) {
+            e.preventDefault();
+            var navHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height'));
+            var targetPos = target.getBoundingClientRect().top + window.scrollY - navHeight - 20;
+            window.scrollTo({
+              top: targetPos,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      /* ---- Scroll reveal (IntersectionObserver) ---- */
+      var reveals = document.querySelectorAll('.reveal');
+
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.12,
+          rootMargin: '0px 0px -40px 0px'
+        });
+
+        reveals.forEach(function(el) {
+          observer.observe(el);
+        });
+      } else {
+        /* Fallback: show all elements */
+        reveals.forEach(function(el) {
+          el.classList.add('visible');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
