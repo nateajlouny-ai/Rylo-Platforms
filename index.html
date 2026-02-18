@@ -6,27 +6,25 @@
   <title>Rylo Platforms — AI-Powered Appointments for Realtors</title>
   <meta name="description" content="Rylo Platforms deploys an AI sales team that books confirmed, exclusive appointments with qualified buyers and sellers — so realtors can focus on closing.">
 
-  <!-- ============================================================
-       FONTS — Sora (headings), DM Sans (body), JetBrains Mono (accents)
-       ============================================================ -->
+  <!-- FONTS — Sora (headings), DM Sans (body), JetBrains Mono (accents) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
     /* ===========================================================
-       CSS VARIABLES — EXACT COLOR PALETTE
+       CSS VARIABLES
        =========================================================== */
     :root {
-      --black:        #000000;
-      --midnight:     #0B1F3A;
-      --steel:        #1E3F6D;
-      --electric:     #00A8FF;
-      --silver:       #C9D2DC;
-      --bluegray:     #6E87A6;
-      --card-bg:      #0D2240;
-      --border:       rgba(0, 168, 255, 0.15);
-      --glow:         rgba(0, 168, 255, 0.25);
+      --black:    #000000;
+      --midnight: #0B1F3A;
+      --steel:    #1E3F6D;
+      --electric: #00A8FF;
+      --silver:   #C9D2DC;
+      --bluegray: #6E87A6;
+      --card-bg:  #0D2240;
+      --border:   rgba(0, 168, 255, 0.15);
+      --glow:     rgba(0, 168, 255, 0.25);
 
       --font-heading: 'Sora', sans-serif;
       --font-body:    'DM Sans', sans-serif;
@@ -36,11 +34,7 @@
     /* ===========================================================
        RESET & BASE
        =========================================================== */
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     html {
       scroll-behavior: smooth;
@@ -58,45 +52,15 @@
       overflow-x: hidden;
     }
 
-    h1, h2, h3, h4 {
-      font-family: var(--font-heading);
-      color: var(--silver);
-      line-height: 1.2;
-    }
+    h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--silver); line-height: 1.2; }
+    h1 { font-size: clamp(2.5rem, 5vw, 4.2rem); font-weight: 700; }
+    h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; }
+    h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 600; }
+    p  { color: var(--silver); }
 
-    h1 {
-      font-size: clamp(2.5rem, 5vw, 4.2rem);
-      font-weight: 700;
-    }
-
-    h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-    }
-
-    h3 {
-      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-      font-weight: 600;
-    }
-
-    p {
-      color: var(--silver);
-    }
-
-    a {
-      color: var(--electric);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    a:hover {
-      color: #5cc8ff;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
+    a { color: var(--electric); text-decoration: none; transition: color 0.3s ease; }
+    a:hover { color: #5cc8ff; }
+    img { max-width: 100%; display: block; }
 
     .container {
       max-width: 1200px;
@@ -104,9 +68,20 @@
       padding: 0 2rem;
     }
 
-    .muted {
-      color: var(--bluegray);
-      font-size: 0.9rem;
+    .muted { color: var(--bluegray); font-size: 0.9rem; }
+
+    /* Scroll anchor offset so navbar doesn't cover headings */
+    section[id] { scroll-margin-top: 90px; }
+
+    /* ===========================================================
+       BOOKED APPOINTMENTS — GRADIENT TEXT EMPHASIS
+       =========================================================== */
+    .booked-emphasis {
+      background: linear-gradient(135deg, #00A8FF, #1E9FFF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
     }
 
     /* ===========================================================
@@ -130,18 +105,12 @@
 
     .btn-primary:hover {
       color: #fff;
-      box-shadow: 0 0 30px var(--glow), 0 0 60px rgba(0, 168, 255, 0.1);
+      box-shadow: 0 8px 25px rgba(0, 168, 255, 0.5);
       transform: translateY(-2px);
     }
 
-    .btn-primary:active {
-      transform: translateY(0);
-    }
-
-    .btn-large {
-      padding: 1.2rem 3rem;
-      font-size: 1.15rem;
-    }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-large { padding: 1.2rem 3rem; font-size: 1.15rem; }
 
     /* ===========================================================
        NAVIGATION
@@ -152,11 +121,11 @@
       left: 0;
       width: 100%;
       height: 70px;
-      background: rgba(0, 0, 0, 0.85);
+      background: rgba(0, 0, 0, 0.9);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(0, 168, 255, 0.1);
-      z-index: 10000;
+      z-index: 9000;
       display: flex;
       align-items: center;
     }
@@ -168,19 +137,18 @@
       width: 100%;
     }
 
-    /* Logo — replace .logo-icon content with <img> tag for actual logo PNG */
-    .logo {
+    /* Logo — left side */
+    .nav-left {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
       text-decoration: none;
     }
 
-    .logo-icon {
-      color: var(--electric);
-      font-size: 1.6rem;
-      text-shadow: 0 0 12px var(--glow);
-      line-height: 1;
+    .logo-img {
+      height: 45px;
+      width: auto;
+      margin-right: 12px;
+      border-radius: 6px;
     }
 
     .logo-text {
@@ -189,12 +157,20 @@
       font-weight: 700;
       color: var(--silver);
       letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    /* Nav right — links + CTA */
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 2.5rem;
+      gap: 2rem;
       list-style: none;
     }
 
@@ -206,12 +182,13 @@
       text-decoration: none;
       transition: color 0.3s ease;
       position: relative;
+      padding-bottom: 4px;
     }
 
     .nav-links a::after {
       content: '';
       position: absolute;
-      bottom: -4px;
+      bottom: 0;
       left: 0;
       width: 0;
       height: 2px;
@@ -219,24 +196,12 @@
       transition: width 0.3s ease;
     }
 
-    .nav-links a:hover {
-      color: var(--electric);
-    }
+    .nav-links a:hover { color: var(--electric); }
+    .nav-links a:hover::after { width: 100%; }
 
-    .nav-links a:hover::after {
-      width: 100%;
-    }
+    .nav-cta .btn-primary { padding: 0.65rem 1.6rem; font-size: 0.9rem; }
 
-    .nav-cta {
-      margin-left: 1rem;
-    }
-
-    .nav-cta .btn-primary {
-      padding: 0.65rem 1.6rem;
-      font-size: 0.9rem;
-    }
-
-    /* Hamburger menu */
+    /* Hamburger */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -255,17 +220,9 @@
       transition: all 0.3s ease;
     }
 
-    .hamburger.active span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .hamburger.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .hamburger.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
-    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
     .mobile-menu {
       display: none;
@@ -278,7 +235,7 @@
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       padding: 2rem;
-      z-index: 9999;
+      z-index: 8999;
     }
 
     .mobile-menu.active {
@@ -297,25 +254,19 @@
       border-bottom: 1px solid var(--border);
     }
 
-    .mobile-menu a:last-child {
-      border-bottom: none;
-    }
-
-    .mobile-menu .btn-primary {
-      text-align: center;
-      margin-top: 0.5rem;
-    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu .btn-primary { text-align: center; margin-top: 0.5rem; }
 
     /* ===========================================================
-       STICKY BOTTOM BAR — ALWAYS VISIBLE
+       STICKY BOTTOM BAR — hidden until past hero
        =========================================================== */
     .sticky-bar {
       position: fixed;
       bottom: 0;
       left: 0;
       width: 100%;
-      z-index: 9999;
-      background: rgba(11, 31, 58, 0.95);
+      z-index: 8999;
+      background: rgba(11, 31, 58, 0.97);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-top: 1px solid rgba(0, 168, 255, 0.2);
@@ -323,6 +274,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      opacity: 0;
+      transform: translateY(100%);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .sticky-bar.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .sticky-bar-text {
@@ -332,11 +291,71 @@
       font-weight: 500;
     }
 
-    .sticky-bar .btn-primary {
-      padding: 0.7rem 1.8rem;
-      font-size: 0.9rem;
-      white-space: nowrap;
+    .sticky-bar .btn-primary { padding: 0.7rem 1.8rem; font-size: 0.9rem; white-space: nowrap; }
+
+    /* ===========================================================
+       CALENDLY MODAL
+       =========================================================== */
+    .calendly-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
     }
+
+    .calendly-modal.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-content {
+      background: #0B1F3A;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 168, 255, 0.3);
+      padding: 2rem;
+      max-width: 1000px;
+      width: 90%;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 168, 255, 0.2);
+      max-height: 90vh;
+      overflow: hidden;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: transparent;
+      border: none;
+      color: var(--silver);
+      font-size: 2rem;
+      cursor: pointer;
+      z-index: 10;
+      transition: color 0.3s ease;
+      line-height: 1;
+    }
+
+    .modal-close:hover { color: var(--electric); }
+
+    .calendly-embed-container {
+      width: 100%;
+      height: 700px;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    .calendly-embed-container iframe { display: block; }
 
     /* ===========================================================
        SCROLL ANIMATION UTILITY
@@ -344,7 +363,7 @@
     .reveal {
       opacity: 0;
       transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
 
     .reveal.visible {
@@ -365,26 +384,20 @@
       background: var(--black);
     }
 
-    /* Radial overlay */
     .hero::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background: radial-gradient(ellipse at 30% 50%, rgba(11, 31, 58, 0.7) 0%, transparent 70%);
       pointer-events: none;
     }
 
-    /* Subtle grid pattern */
     .hero::after {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background-image:
         linear-gradient(rgba(0, 168, 255, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0, 168, 255, 0.03) 1px, transparent 1px);
@@ -392,13 +405,10 @@
       pointer-events: none;
     }
 
-    /* Animated glow orb */
     .hero-glow {
       position: absolute;
-      top: 20%;
-      right: 15%;
-      width: 400px;
-      height: 400px;
+      top: 20%; right: 15%;
+      width: 400px; height: 400px;
       background: radial-gradient(circle, rgba(0, 168, 255, 0.12) 0%, transparent 70%);
       border-radius: 50%;
       filter: blur(60px);
@@ -420,28 +430,42 @@
       z-index: 2;
     }
 
-    .hero-content {
-      padding: 2rem 0;
-    }
-
-    .hero-content h1 {
-      margin-bottom: 1.5rem;
-      line-height: 1.15;
-    }
-
-    .hero-content h1 .highlight {
-      color: var(--electric);
-    }
+    .hero-content { padding: 2rem 0; }
+    .hero-content h1 { margin-bottom: 1.5rem; line-height: 1.15; }
 
     .hero-content .subheadline {
       font-size: 1.15rem;
       color: var(--bluegray);
-      margin-bottom: 2.5rem;
+      margin-bottom: 1.5rem;
       max-width: 540px;
       line-height: 1.7;
     }
 
-    /* Hero right: Appointment mock card */
+    /* Stat badge */
+    .stat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: rgba(0, 168, 255, 0.08);
+      border: 1px solid rgba(0, 168, 255, 0.2);
+      border-radius: 50px;
+      padding: 0.6rem 1.4rem;
+      margin-bottom: 2rem;
+      font-family: var(--font-mono);
+    }
+
+    .stat-badge .stat-number {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--electric);
+    }
+
+    .stat-badge .stat-label {
+      font-size: 0.85rem;
+      color: var(--bluegray);
+    }
+
+    /* Hero visual */
     .hero-visual {
       display: flex;
       justify-content: center;
@@ -473,8 +497,7 @@
     }
 
     .appointment-card-header .status-dot {
-      width: 10px;
-      height: 10px;
+      width: 10px; height: 10px;
       background: #22c55e;
       border-radius: 50%;
       box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
@@ -522,7 +545,6 @@
       margin-top: 0.5rem;
     }
 
-    /* Floating stat cards around the appointment card */
     .floating-stat {
       position: absolute;
       background: var(--card-bg);
@@ -536,21 +558,10 @@
       white-space: nowrap;
     }
 
-    .floating-stat.stat-1 {
-      top: 5%;
-      right: 0;
-      animation: floatCard 4s ease-in-out infinite;
-      animation-delay: -1s;
-    }
+    .floating-stat.stat-1 { top: 5%; right: 0; animation: floatCard 4s ease-in-out infinite; animation-delay: -1s; }
+    .floating-stat.stat-2 { bottom: 10%; left: -5%; animation: floatCard 5s ease-in-out infinite; animation-delay: -2.5s; }
 
-    .floating-stat.stat-2 {
-      bottom: 10%;
-      left: -5%;
-      animation: floatCard 5s ease-in-out infinite;
-      animation-delay: -2.5s;
-    }
-
-    .floating-stat .stat-number {
+    .floating-stat .stat-num {
       color: var(--electric);
       font-weight: 700;
       font-size: 1.1rem;
@@ -561,19 +572,13 @@
        SECTION 2: PROBLEM / SOLUTION
        =========================================================== */
     .problem-solution {
-      padding: 7rem 0;
+      padding: 6rem 0;
       background: var(--midnight);
       position: relative;
     }
 
-    .problem-solution .section-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .problem-solution .section-header h2 {
-      margin-bottom: 0.5rem;
-    }
+    .problem-solution .section-header { text-align: center; margin-bottom: 4rem; }
+    .problem-solution .section-header h2 { margin-bottom: 0.5rem; }
 
     .ps-grid {
       display: grid;
@@ -590,35 +595,16 @@
     }
 
     .ps-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 30px rgba(0, 168, 255, 0.08);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0, 168, 255, 0.3);
     }
 
-    .ps-card-header {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      margin-bottom: 2rem;
-    }
+    .ps-card-header { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 2rem; }
+    .ps-card-header h3 { font-size: 1.4rem; }
+    .ps-card.old .ps-card-header h3 { color: var(--bluegray); }
+    .ps-card.new .ps-card-header h3 { color: var(--electric); }
 
-    .ps-card-header h3 {
-      font-size: 1.4rem;
-    }
-
-    .ps-card.old .ps-card-header h3 {
-      color: var(--bluegray);
-    }
-
-    .ps-card.new .ps-card-header h3 {
-      color: var(--electric);
-    }
-
-    .ps-card ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
+    .ps-card ul { list-style: none; display: flex; flex-direction: column; gap: 1.2rem; }
 
     .ps-card ul li {
       display: flex;
@@ -628,18 +614,12 @@
       line-height: 1.6;
     }
 
-    .ps-card.old ul li {
-      color: var(--bluegray);
-    }
-
-    .ps-card.new ul li {
-      color: var(--silver);
-    }
+    .ps-card.old ul li { color: var(--bluegray); }
+    .ps-card.new ul li { color: var(--silver); }
 
     .ps-icon {
       flex-shrink: 0;
-      width: 22px;
-      height: 22px;
+      width: 22px; height: 22px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -649,33 +629,22 @@
       margin-top: 3px;
     }
 
-    .ps-card.old .ps-icon {
-      background: rgba(110, 135, 166, 0.15);
-      color: var(--bluegray);
-    }
+    .ps-card.old .ps-icon { background: rgba(110, 135, 166, 0.15); color: var(--bluegray); }
+    .ps-card.new .ps-icon { background: rgba(0, 168, 255, 0.15); color: var(--electric); }
 
-    .ps-card.new .ps-icon {
-      background: rgba(0, 168, 255, 0.15);
-      color: var(--electric);
-    }
+    .ps-cta { text-align: center; margin-top: 3.5rem; }
 
     /* ===========================================================
        SECTION 3: HOW IT WORKS
        =========================================================== */
     .how-it-works {
-      padding: 7rem 0;
+      padding: 6rem 0;
       background: var(--black);
       position: relative;
     }
 
-    .how-it-works .section-header {
-      text-align: left;
-      margin-bottom: 1rem;
-    }
-
-    .how-it-works .section-header h2 {
-      margin-bottom: 1rem;
-    }
+    .how-it-works .section-header { text-align: left; margin-bottom: 1rem; }
+    .how-it-works .section-header h2 { margin-bottom: 1rem; }
 
     .how-it-works .section-subheadline {
       color: var(--bluegray);
@@ -692,7 +661,6 @@
       position: relative;
     }
 
-    /* Animated connector line */
     .steps-grid::before {
       content: '';
       position: absolute;
@@ -707,7 +675,7 @@
     }
 
     @keyframes lineFlow {
-      0% { background-position: 200% 0; }
+      0%   { background-position: 200% 0; }
       100% { background-position: -200% 0; }
     }
 
@@ -723,9 +691,9 @@
     }
 
     .step-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
       border-color: var(--electric);
-      box-shadow: 0 0 25px rgba(0, 168, 255, 0.12);
+      box-shadow: 0 12px 40px rgba(0, 168, 255, 0.3);
     }
 
     .step-number {
@@ -737,16 +705,8 @@
       line-height: 1;
     }
 
-    .step-card h3 {
-      margin-bottom: 0.8rem;
-      font-size: 1.15rem;
-    }
-
-    .step-card p {
-      color: var(--bluegray);
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
+    .step-card h3 { margin-bottom: 0.8rem; font-size: 1.15rem; }
+    .step-card p  { color: var(--bluegray); font-size: 0.95rem; line-height: 1.6; }
 
     .how-it-works .section-note {
       text-align: center;
@@ -756,23 +716,18 @@
       font-style: italic;
     }
 
+    .section-cta { text-align: center; margin-top: 3.5rem; }
+
     /* ===========================================================
        SECTION 4: AI SALES TEAM FEATURES
        =========================================================== */
     .ai-features {
-      padding: 7rem 0;
+      padding: 6rem 0;
       background: var(--midnight);
     }
 
-    .ai-features .section-header {
-      text-align: left;
-      margin-bottom: 1rem;
-    }
-
-    .ai-features .section-header h2 {
-      margin-bottom: 1rem;
-      max-width: 700px;
-    }
+    .ai-features .section-header { text-align: left; margin-bottom: 1rem; }
+    .ai-features .section-header h2 { margin-bottom: 1rem; max-width: 700px; }
 
     .ai-features .section-subheadline {
       color: var(--bluegray);
@@ -797,14 +752,13 @@
     }
 
     .feature-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
       border-color: var(--electric);
-      box-shadow: 0 0 25px rgba(0, 168, 255, 0.12);
+      box-shadow: 0 12px 40px rgba(0, 168, 255, 0.3);
     }
 
     .feature-icon {
-      width: 48px;
-      height: 48px;
+      width: 48px; height: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -816,23 +770,14 @@
       color: var(--electric);
     }
 
-    .feature-card h3 {
-      margin-bottom: 0.8rem;
-      font-size: 1.15rem;
-      color: var(--silver);
-    }
-
-    .feature-card p {
-      color: var(--bluegray);
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
+    .feature-card h3 { margin-bottom: 0.8rem; font-size: 1.15rem; color: var(--silver); }
+    .feature-card p  { color: var(--bluegray); font-size: 0.95rem; line-height: 1.6; }
 
     /* ===========================================================
        SECTION 5: PRICING
        =========================================================== */
     .pricing {
-      padding: 7rem 0;
+      padding: 6rem 0;
       background: var(--black);
     }
 
@@ -843,9 +788,7 @@
       align-items: center;
     }
 
-    .pricing-content h2 {
-      margin-bottom: 1rem;
-    }
+    .pricing-content h2  { margin-bottom: 1rem; }
 
     .pricing-content .pricing-sub {
       color: var(--bluegray);
@@ -863,19 +806,8 @@
       margin-bottom: 0.3rem;
     }
 
-    .price-label {
-      color: var(--bluegray);
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .price-note {
-      color: var(--bluegray);
-      font-size: 0.9rem;
-      margin-bottom: 2rem;
-      max-width: 460px;
-      line-height: 1.6;
-    }
+    .price-label { color: var(--bluegray); font-size: 1rem; margin-bottom: 0.5rem; }
+    .price-note  { color: var(--bluegray); font-size: 0.9rem; margin-bottom: 2rem; max-width: 460px; line-height: 1.6; }
 
     .included-list {
       list-style: none;
@@ -893,13 +825,8 @@
       color: var(--silver);
     }
 
-    .included-list .check {
-      color: var(--electric);
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
+    .included-list .check { color: var(--electric); font-size: 1.1rem; flex-shrink: 0; }
 
-    /* Pricing mock card (right side) */
     .pricing-visual {
       display: flex;
       justify-content: center;
@@ -928,8 +855,7 @@
     }
 
     .pricing-mock-card .mock-header .bell-icon {
-      width: 36px;
-      height: 36px;
+      width: 36px; height: 36px;
       background: rgba(0, 168, 255, 0.1);
       border-radius: 8px;
       display: flex;
@@ -946,10 +872,7 @@
       color: var(--silver);
     }
 
-    .pricing-mock-card .mock-header .mock-time {
-      font-size: 0.8rem;
-      color: var(--bluegray);
-    }
+    .pricing-mock-card .mock-header .mock-time { font-size: 0.8rem; color: var(--bluegray); }
 
     .mock-row {
       display: flex;
@@ -966,11 +889,7 @@
       letter-spacing: 0.06em;
     }
 
-    .mock-row .mock-value {
-      font-size: 0.95rem;
-      color: var(--silver);
-      font-weight: 600;
-    }
+    .mock-row .mock-value { font-size: 0.95rem; color: var(--silver); font-weight: 600; }
 
     .mock-badge {
       display: inline-flex;
@@ -988,25 +907,169 @@
     }
 
     .mock-badge .dot {
-      width: 7px;
-      height: 7px;
+      width: 7px; height: 7px;
       background: #22c55e;
       border-radius: 50%;
       box-shadow: 0 0 6px rgba(34, 197, 94, 0.5);
     }
 
     /* ===========================================================
+       NEW SECTION: PERFORMANCE-BASED DIFFERENCE
+       =========================================================== */
+    .performance {
+      padding: 6rem 0;
+      background: linear-gradient(180deg, #000000 0%, #0B1F3A 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .performance::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(0, 168, 255, 0.05) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .performance .section-header {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .performance .section-header h2 { margin-bottom: 1rem; }
+
+    .performance .section-subheadline {
+      text-align: center;
+      color: var(--bluegray);
+      font-size: 1.1rem;
+      max-width: 680px;
+      margin: 0 auto 4rem;
+      line-height: 1.7;
+    }
+
+    /* Comparison table */
+    .comparison-table {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .comparison-col {
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .comparison-col-header {
+      padding: 1.2rem 2rem;
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+
+    .comparison-col.traditional .comparison-col-header {
+      background: rgba(110, 135, 166, 0.15);
+      color: var(--bluegray);
+      border: 1px solid rgba(110, 135, 166, 0.2);
+      border-bottom: none;
+      border-radius: 16px 16px 0 0;
+    }
+
+    .comparison-col.rylo .comparison-col-header {
+      background: rgba(0, 168, 255, 0.12);
+      color: var(--electric);
+      border: 1px solid rgba(0, 168, 255, 0.3);
+      border-bottom: none;
+      border-radius: 16px 16px 0 0;
+      box-shadow: 0 0 30px rgba(0, 168, 255, 0.1);
+    }
+
+    .comparison-rows {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .comparison-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.1rem 2rem;
+      border-left: 1px solid;
+      border-right: 1px solid;
+      border-bottom: 1px solid;
+    }
+
+    .comparison-col.traditional .comparison-row {
+      border-color: rgba(110, 135, 166, 0.2);
+      background: rgba(110, 135, 166, 0.04);
+    }
+
+    .comparison-col.traditional .comparison-row:last-child {
+      border-radius: 0 0 16px 16px;
+    }
+
+    .comparison-col.rylo .comparison-row {
+      border-color: rgba(0, 168, 255, 0.2);
+      background: rgba(0, 168, 255, 0.03);
+    }
+
+    .comparison-col.rylo .comparison-row:last-child {
+      border-radius: 0 0 16px 16px;
+    }
+
+    .comparison-icon {
+      flex-shrink: 0;
+      width: 22px; height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .comparison-col.traditional .comparison-icon {
+      background: rgba(220, 60, 60, 0.15);
+      color: #f87171;
+    }
+
+    .comparison-col.rylo .comparison-icon {
+      background: rgba(0, 168, 255, 0.15);
+      color: var(--electric);
+    }
+
+    .comparison-col.traditional .comparison-row span {
+      color: var(--bluegray);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .comparison-col.rylo .comparison-row span {
+      color: var(--silver);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .comparison-col.rylo .comparison-row span strong {
+      color: var(--electric);
+    }
+
+    /* ===========================================================
        SECTION 6: TESTIMONIALS
        =========================================================== */
     .testimonials {
-      padding: 7rem 0;
+      padding: 6rem 0;
       background: var(--midnight);
     }
 
-    .testimonials .section-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
+    .testimonials .section-header { text-align: center; margin-bottom: 4rem; }
 
     .testimonials-grid {
       display: grid;
@@ -1023,8 +1086,8 @@
     }
 
     .testimonial-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 25px rgba(0, 168, 255, 0.1);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0, 168, 255, 0.3);
     }
 
     .testimonial-card blockquote {
@@ -1035,22 +1098,14 @@
       margin-bottom: 1.5rem;
     }
 
-    .testimonial-card .author {
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: #fff;
-    }
-
-    .testimonial-card .location {
-      font-size: 0.85rem;
-      color: var(--bluegray);
-    }
+    .testimonial-card .author { font-weight: 700; font-size: 0.95rem; color: #fff; }
+    .testimonial-card .location { font-size: 0.85rem; color: var(--bluegray); }
 
     /* ===========================================================
        SECTION 7: FINAL CTA
        =========================================================== */
     .final-cta {
-      padding: 7rem 0;
+      padding: 6rem 0;
       background: linear-gradient(135deg, var(--midnight), var(--steel));
       text-align: center;
       position: relative;
@@ -1060,20 +1115,15 @@
     .final-cta::before {
       content: '';
       position: absolute;
-      top: -50%;
-      left: 50%;
+      top: -50%; left: 50%;
       transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
+      width: 600px; height: 600px;
       background: radial-gradient(circle, rgba(0, 168, 255, 0.08) 0%, transparent 70%);
       border-radius: 50%;
       pointer-events: none;
     }
 
-    .final-cta .container {
-      position: relative;
-      z-index: 2;
-    }
+    .final-cta .container { position: relative; z-index: 2; }
 
     .final-cta h2 {
       margin-bottom: 1.2rem;
@@ -1091,7 +1141,7 @@
     }
 
     /* ===========================================================
-       SECTION 8: FOOTER
+       FOOTER
        =========================================================== */
     .site-footer {
       padding: 4rem 0 2rem;
@@ -1106,17 +1156,16 @@
       margin-bottom: 3rem;
     }
 
-    .footer-brand .logo {
+    .footer-brand .footer-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
       margin-bottom: 1rem;
     }
 
-    .footer-brand .tagline {
-      color: var(--bluegray);
-      font-size: 0.95rem;
-      max-width: 280px;
-    }
+    .footer-brand .tagline { color: var(--bluegray); font-size: 0.95rem; max-width: 280px; }
 
-    .footer-links h4 {
+    .footer-links h4, .footer-social h4 {
       font-size: 0.9rem;
       font-weight: 600;
       color: var(--silver);
@@ -1125,12 +1174,7 @@
       margin-bottom: 1.2rem;
     }
 
-    .footer-links ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-    }
+    .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
 
     .footer-links ul a {
       color: var(--bluegray);
@@ -1138,27 +1182,12 @@
       transition: color 0.3s ease;
     }
 
-    .footer-links ul a:hover {
-      color: var(--electric);
-    }
+    .footer-links ul a:hover { color: var(--electric); }
 
-    .footer-social h4 {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--silver);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 1.2rem;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 1rem;
-    }
+    .social-links { display: flex; gap: 1rem; }
 
     .social-link {
-      width: 42px;
-      height: 42px;
+      width: 42px; height: 42px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1188,105 +1217,40 @@
        RESPONSIVE — 1024px
        =========================================================== */
     @media (max-width: 1024px) {
-      .hero .container {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .hero-content {
-        order: 1;
-      }
-
-      .hero-content .subheadline {
-        max-width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .hero-visual {
-        order: 2;
-        margin-top: 2rem;
-      }
-
-      .steps-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .steps-grid::before {
-        display: none;
-      }
-
-      .features-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .pricing .container {
-        grid-template-columns: 1fr;
-      }
-
-      .pricing-visual {
-        margin-top: 2rem;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-      }
+      .hero .container { grid-template-columns: 1fr; text-align: center; }
+      .hero-content { order: 1; }
+      .hero-content .subheadline { max-width: 100%; margin-left: auto; margin-right: auto; }
+      .hero-visual { order: 2; margin-top: 2rem; }
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-grid::before { display: none; }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .pricing .container { grid-template-columns: 1fr; }
+      .pricing-visual { margin-top: 2rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
     }
 
     /* ===========================================================
        RESPONSIVE — 768px
        =========================================================== */
     @media (max-width: 768px) {
-      .nav-links,
-      .nav-cta {
-        display: none;
-      }
-
-      .hamburger {
-        display: flex;
-      }
-
-      .ps-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .steps-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .features-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .testimonials-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      h1 {
-        font-size: clamp(2rem, 6vw, 3rem);
-      }
-
-      h2 {
-        font-size: clamp(1.7rem, 5vw, 2.5rem);
-      }
-
-      .floating-stat {
-        display: none;
-      }
+      .nav-right { display: none; }
+      .hamburger { display: flex; }
+      .ps-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .comparison-table { grid-template-columns: 1fr; }
+      h1 { font-size: clamp(2rem, 6vw, 3rem); }
+      h2 { font-size: clamp(1.7rem, 5vw, 2.5rem); }
+      .floating-stat { display: none; }
     }
 
     /* ===========================================================
        RESPONSIVE — 480px
        =========================================================== */
     @media (max-width: 480px) {
-      .container {
-        padding: 0 1.2rem;
-      }
+      .container { padding: 0 1.2rem; }
 
       .sticky-bar {
         flex-direction: column;
@@ -1295,25 +1259,16 @@
         padding: 0.8rem 1.2rem;
       }
 
-      .sticky-bar-text {
-        font-size: 0.85rem;
-      }
+      .sticky-bar-text { font-size: 0.85rem; }
+      body { padding-bottom: 110px; }
+      .hero { padding-top: 90px; }
+      .appointment-card { max-width: 100%; }
+      .pricing-mock-card { max-width: 100%; }
 
-      body {
-        padding-bottom: 110px;
-      }
+      .modal-content { padding: 1.2rem; }
+      .calendly-embed-container { height: 500px; }
 
-      .hero {
-        padding-top: 90px;
-      }
-
-      .appointment-card {
-        max-width: 100%;
-      }
-
-      .pricing-mock-card {
-        max-width: 100%;
-      }
+      .stat-badge { flex-direction: column; text-align: center; gap: 0.3rem; }
     }
   </style>
 </head>
@@ -1324,37 +1279,41 @@
        ============================================================ -->
   <header class="navbar" id="navbar">
     <div class="container">
-      <!-- Logo — to replace triangle with actual logo PNG, swap the span below with an <img> tag -->
-      <a href="#" class="logo">
-        <span class="logo-icon">&#9650;</span>
+
+      <!-- Logo LEFT -->
+      <a href="#" class="nav-left">
+        <img src="https://i.imgur.com/97muSNQ.jpeg" alt="Rylo Platforms Logo" class="logo-img">
         <span class="logo-text">Rylo Platforms</span>
       </a>
 
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#how-it-works">How It Works</a></li>
-          <li><a href="#results">Results</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-        </ul>
-      </nav>
-
-      <div class="nav-cta">
-        <a href="https://calendly.com/ryloplatforms/30min?month=2026-02" target="_blank" rel="noopener" class="btn-primary">Schedule a Consultation</a>
+      <!-- Nav links + CTA RIGHT -->
+      <div class="nav-right">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#why-rylo">Why Rylo</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#results">Results</a></li>
+          </ul>
+        </nav>
+        <div class="nav-cta">
+          <button class="btn-primary cta-button">Book Your Free Consultation</button>
+        </div>
       </div>
 
+      <!-- Hamburger (mobile) -->
       <button class="hamburger" id="hamburger" aria-label="Open menu">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
     </div>
 
     <!-- Mobile dropdown -->
     <div class="mobile-menu" id="mobile-menu">
       <a href="#how-it-works" class="mobile-link">How It Works</a>
-      <a href="#results" class="mobile-link">Results</a>
+      <a href="#why-rylo" class="mobile-link">Why Rylo</a>
       <a href="#pricing" class="mobile-link">Pricing</a>
-      <a href="https://calendly.com/ryloplatforms/30min?month=2026-02" target="_blank" rel="noopener" class="btn-primary">Schedule a Consultation</a>
+      <a href="#results" class="mobile-link">Results</a>
+      <button class="btn-primary cta-button" style="text-align:center; border:none; width:100%; cursor:pointer;">Book Your Free Consultation</button>
     </div>
   </header>
 
@@ -1364,15 +1323,29 @@
   <section class="hero" id="hero">
     <div class="hero-glow"></div>
     <div class="container">
+
       <div class="hero-content reveal">
-        <h1>Your AI Sales Team.<br>Working 24/7.<br>So You Can <span class="highlight">Just Close.</span></h1>
-        <p class="subheadline">Rylo Platforms deploys an AI system that contacts, nurtures, handles objections, and books confirmed virtual appointments directly onto your calendar — with serious buyers and sellers. You pay nothing until the appointment is booked.</p>
-        <a href="https://calendly.com/ryloplatforms/30min?month=2026-02" target="_blank" rel="noopener" class="btn-primary btn-large">Schedule a Consultation</a>
+
+        <!-- Live stat badge -->
+        <div class="stat-badge">
+          <span class="stat-number" id="appointmentCounter">0</span>
+          <span class="stat-label">Appointments Booked This Month</span>
+        </div>
+
+        <h1>Your 24/7 AI Sales Team That Turns Cold Leads Into <span class="booked-emphasis">Booked Appointments</span></h1>
+
+        <p class="subheadline">
+          Rylo Platforms deploys an AI-powered sales team that contacts leads, handles objections, nurtures prospects 24/7, and delivers
+          <span class="booked-emphasis">confirmed, booked appointments</span> directly to your calendar.
+          You don't pay a dollar until the appointment is confirmed.
+        </p>
+
+        <button class="btn-primary btn-large cta-button">Book Your Free Consultation</button>
       </div>
 
       <div class="hero-visual reveal">
         <div class="floating-stat stat-1">
-          <span class="stat-number">47</span>
+          <span class="stat-num">47</span>
           appointments booked this week
         </div>
 
@@ -1393,10 +1366,11 @@
         </div>
 
         <div class="floating-stat stat-2">
-          <span class="stat-number">98%</span>
+          <span class="stat-num">98%</span>
           show rate
         </div>
       </div>
+
     </div>
   </section>
 
@@ -1415,26 +1389,11 @@
             <h3>The Old Way</h3>
           </div>
           <ul>
-            <li>
-              <span class="ps-icon">&times;</span>
-              <span>Buying leads and getting ghosted</span>
-            </li>
-            <li>
-              <span class="ps-icon">&times;</span>
-              <span>Following up 10 times with no response</span>
-            </li>
-            <li>
-              <span class="ps-icon">&times;</span>
-              <span>Sharing leads with 3 other agents</span>
-            </li>
-            <li>
-              <span class="ps-icon">&times;</span>
-              <span>Spending your mornings cold calling instead of closing</span>
-            </li>
-            <li>
-              <span class="ps-icon">&times;</span>
-              <span>Watching hot leads go cold because you couldn't respond fast enough</span>
-            </li>
+            <li><span class="ps-icon">&times;</span><span>Buying raw leads and getting ghosted</span></li>
+            <li><span class="ps-icon">&times;</span><span>Following up 10 times with no response</span></li>
+            <li><span class="ps-icon">&times;</span><span>Sharing prospects with 3 other agents</span></li>
+            <li><span class="ps-icon">&times;</span><span>Spending your mornings cold calling instead of closing</span></li>
+            <li><span class="ps-icon">&times;</span><span>Watching hot prospects go cold because you couldn't respond fast enough</span></li>
           </ul>
         </div>
 
@@ -1443,28 +1402,17 @@
             <h3>The Rylo Way</h3>
           </div>
           <ul>
-            <li>
-              <span class="ps-icon">&#10003;</span>
-              <span>A confirmed appointment lands on your calendar</span>
-            </li>
-            <li>
-              <span class="ps-icon">&#10003;</span>
-              <span>The prospect already knows who you are and why they're meeting with you</span>
-            </li>
-            <li>
-              <span class="ps-icon">&#10003;</span>
-              <span>You're the only agent they're talking to</span>
-            </li>
-            <li>
-              <span class="ps-icon">&#10003;</span>
-              <span>Your mornings are for closings, not cold calls</span>
-            </li>
-            <li>
-              <span class="ps-icon">&#10003;</span>
-              <span>Every lead gets instant, 24/7 follow-up — no lead goes cold</span>
-            </li>
+            <li><span class="ps-icon">&#10003;</span><span>A <span class="booked-emphasis">confirmed, booked appointment</span> lands on your calendar</span></li>
+            <li><span class="ps-icon">&#10003;</span><span>The prospect already knows who you are and why they're meeting with you</span></li>
+            <li><span class="ps-icon">&#10003;</span><span>You're the only agent they're talking to — 100% exclusive</span></li>
+            <li><span class="ps-icon">&#10003;</span><span>Your mornings are for closings, not cold calls</span></li>
+            <li><span class="ps-icon">&#10003;</span><span>Every prospect gets instant, 24/7 follow-up — no one goes cold</span></li>
           </ul>
         </div>
+      </div>
+
+      <div class="ps-cta reveal">
+        <button class="btn-primary btn-large cta-button">See How It Works</button>
       </div>
     </div>
   </section>
@@ -1477,13 +1425,16 @@
       <div class="section-header reveal">
         <h2>Your AI Sales Team, Explained.</h2>
       </div>
-      <p class="section-subheadline reveal">While other agents are stuck in follow-up hell, Rylo's AI is working round the clock to fill your calendar with real opportunities.</p>
+      <p class="section-subheadline reveal">
+        While other agents are stuck in follow-up hell, Rylo's AI is working round the clock to fill your calendar with
+        <span class="booked-emphasis">booked appointments</span>.
+      </p>
 
       <div class="steps-grid">
         <div class="step-card reveal">
           <div class="step-number">01</div>
           <h3>We Source the Prospect</h3>
-          <p>A buyer or seller enters our pipeline — someone actively looking for a real estate agent in your market.</p>
+          <p>A buyer or seller enters our pipeline — someone actively looking for a real estate agent in your market. We source prospects and convert them into <span class="booked-emphasis">booked appointments</span>.</p>
         </div>
 
         <div class="step-card reveal">
@@ -1495,7 +1446,7 @@
         <div class="step-card reveal">
           <div class="step-number">03</div>
           <h3>Appointment Confirmed</h3>
-          <p>Once the prospect is fully qualified and ready to move forward, the AI schedules a virtual appointment on your calendar. You receive a notification.</p>
+          <p>Once the prospect is fully qualified and ready to move forward, the AI schedules a <span class="booked-emphasis">booked appointment</span> on your calendar. You receive a notification instantly.</p>
         </div>
 
         <div class="step-card reveal">
@@ -1506,6 +1457,10 @@
       </div>
 
       <p class="section-note reveal">Every market is different — discuss your area on the consultation call.</p>
+
+      <div class="section-cta reveal">
+        <button class="btn-primary btn-large cta-button">Get Your First Appointment</button>
+      </div>
     </div>
   </section>
 
@@ -1515,21 +1470,24 @@
   <section class="ai-features" id="features">
     <div class="container">
       <div class="section-header reveal">
-        <h2>You're Not Hiring a Lead Gen Company. You're Getting an AI Sales Team.</h2>
+        <h2>You're Not Hiring a Lead Gen Company.<br>You're Getting an AI Sales Team.</h2>
       </div>
-      <p class="section-subheadline reveal">Most lead gen companies hand you a name and a number. Rylo Platforms gives you a team that works every lead until it's a booked appointment.</p>
+      <p class="section-subheadline reveal">
+        Most lead gen companies hand you a name and a number. Rylo Platforms gives you a team that works every prospect until it's a
+        <span class="booked-emphasis">booked appointment</span>.
+      </p>
 
       <div class="features-grid">
         <div class="feature-card reveal">
           <div class="feature-icon">&#9889;</div>
           <h3>Instant Response, Every Time</h3>
-          <p>The moment a lead enters the system, AI makes contact. No delays. No leads going cold because you were busy showing a house.</p>
+          <p>The moment a prospect enters the system, AI makes contact. No delays. No one going cold because you were busy showing a house.</p>
         </div>
 
         <div class="feature-card reveal">
           <div class="feature-icon">&#8635;</div>
           <h3>Relentless Follow-Up</h3>
-          <p>Most leads don't convert on the first touch. Our AI follows up strategically across multiple interactions until the prospect is ready — or definitively not interested.</p>
+          <p>Most prospects don't convert on the first touch. Our AI follows up strategically across multiple interactions until the prospect is ready — or definitively not interested.</p>
         </div>
 
         <div class="feature-card reveal">
@@ -1541,20 +1499,24 @@
         <div class="feature-card reveal">
           <div class="feature-icon">&#10004;</div>
           <h3>Fully Qualified Before You Meet</h3>
-          <p>You'll never sit across from someone who was just curious or not serious. Every appointment is screened for intent, timeline, and readiness.</p>
+          <p>You'll never sit across from someone who was just curious. Every <span class="booked-emphasis">booked appointment</span> is screened for intent, timeline, and readiness.</p>
         </div>
 
         <div class="feature-card reveal">
           <div class="feature-icon">&#128274;</div>
           <h3>100% Exclusive</h3>
-          <p>Your leads are never shared with another agent. Every prospect in your pipeline belongs only to you.</p>
+          <p>Your prospects are never shared with another agent. Every person in your pipeline belongs only to you.</p>
         </div>
 
         <div class="feature-card reveal">
           <div class="feature-icon">&#36;</div>
           <h3>Performance-Based Pricing</h3>
-          <p>You don't pay until the appointment is confirmed. No retainers. No monthly fees. Pure results.</p>
+          <p>You don't pay until the <span class="booked-emphasis">booked appointment</span> is confirmed. No retainers. No monthly fees. Pure results.</p>
         </div>
+      </div>
+
+      <div class="section-cta reveal">
+        <button class="btn-primary btn-large cta-button">Start Getting Booked Calls</button>
       </div>
     </div>
   </section>
@@ -1566,11 +1528,15 @@
     <div class="container">
       <div class="pricing-content reveal">
         <h2>No Retainers. No Risk. Pay Per Result.</h2>
-        <p class="pricing-sub">Our model is simple: we don't get paid until you have a booked appointment. Zero upfront costs. Zero monthly fees.</p>
+        <p class="pricing-sub">
+          Our model is simple: we don't get paid until you have a
+          <span class="booked-emphasis">booked appointment</span>.
+          Zero upfront costs. Zero monthly fees.
+        </p>
 
         <div class="price-tag">$150 – $300</div>
         <div class="price-label">per confirmed appointment</div>
-        <p class="price-note">Exact pricing depends on your market, lead volume, and requirements. We'll nail down your rate on the consultation call.</p>
+        <p class="price-note">Exact pricing depends on your market, prospect volume, and requirements. We'll nail down your rate on the call.</p>
 
         <ul class="included-list">
           <li><span class="check">&#10003;</span> Confirmed virtual appointment on your calendar</li>
@@ -1581,7 +1547,7 @@
           <li><span class="check">&#10003;</span> Only pay when it's booked</li>
         </ul>
 
-        <a href="https://calendly.com/ryloplatforms/30min?month=2026-02" target="_blank" rel="noopener" class="btn-primary btn-large">Schedule Your Free Consultation</a>
+        <button class="btn-primary btn-large cta-button">Discuss Your Custom Rate</button>
       </div>
 
       <div class="pricing-visual reveal">
@@ -1621,6 +1587,91 @@
   </section>
 
   <!-- ============================================================
+       NEW SECTION: PERFORMANCE-BASED DIFFERENCE
+       ============================================================ -->
+  <section class="performance" id="why-rylo">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>You Don't Pay Unless We Deliver</h2>
+      </div>
+      <p class="section-subheadline reveal">
+        Unlike traditional lead gen companies that charge upfront and hope for the best, Rylo Platforms operates on pure performance.
+        No <span class="booked-emphasis">booked appointments</span> = you pay nothing.
+      </p>
+
+      <div class="comparison-table reveal">
+
+        <!-- Traditional column -->
+        <div class="comparison-col traditional">
+          <div class="comparison-col-header">Traditional Lead Gen</div>
+          <div class="comparison-rows">
+            <div class="comparison-row">
+              <span class="comparison-icon">&times;</span>
+              <span>Pay upfront retainer ($500–$2,000/mo)</span>
+            </div>
+            <div class="comparison-row">
+              <span class="comparison-icon">&times;</span>
+              <span>Get raw leads (name + number only)</span>
+            </div>
+            <div class="comparison-row">
+              <span class="comparison-icon">&times;</span>
+              <span>You handle all follow-up yourself</span>
+            </div>
+            <div class="comparison-row">
+              <span class="comparison-icon">&times;</span>
+              <span>Leads shared with other agents</span>
+            </div>
+            <div class="comparison-row">
+              <span class="comparison-icon">&times;</span>
+              <span>Monthly contracts, locked in</span>
+            </div>
+            <div class="comparison-row">
+              <span class="comparison-icon">&times;</span>
+              <span>Pay regardless of results</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rylo column -->
+        <div class="comparison-col rylo">
+          <div class="comparison-col-header">Rylo Platforms</div>
+          <div class="comparison-rows">
+            <div class="comparison-row">
+              <span class="comparison-icon">&#10003;</span>
+              <span><strong>$0 upfront</strong> — ever</span>
+            </div>
+            <div class="comparison-row">
+              <span class="comparison-icon">&#10003;</span>
+              <span>Get <span class="booked-emphasis">booked appointments</span> (confirmed calls)</span>
+            </div>
+            <div class="comparison-row">
+              <span class="comparison-icon">&#10003;</span>
+              <span>AI handles <strong>100% of follow-up</strong></span>
+            </div>
+            <div class="comparison-row">
+              <span class="comparison-icon">&#10003;</span>
+              <span><strong>100% exclusive</strong> to you only</span>
+            </div>
+            <div class="comparison-row">
+              <span class="comparison-icon">&#10003;</span>
+              <span>No contracts — cancel anytime</span>
+            </div>
+            <div class="comparison-row">
+              <span class="comparison-icon">&#10003;</span>
+              <span>Only pay per <span class="booked-emphasis">confirmed appointment</span></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="section-cta reveal">
+        <button class="btn-primary btn-large cta-button">See the Difference for Yourself</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
        SECTION 6: TESTIMONIALS
        ============================================================ -->
   <section class="testimonials" id="results">
@@ -1631,28 +1682,32 @@
 
       <div class="testimonials-grid">
         <div class="testimonial-card reveal">
-          <blockquote>"I used to spend the first 2 hours of every day doing follow-up. Now I show up to confirmed calls with buyers who are ready to move. It's completely changed how I operate."</blockquote>
+          <blockquote>"I used to spend the first 2 hours of every day doing follow-up. Now I show up to <span class="booked-emphasis">confirmed, booked appointments</span> with buyers who are ready to move. It's completely changed how I operate."</blockquote>
           <div class="author">Sarah M.</div>
           <div class="location">Austin, TX</div>
         </div>
 
         <div class="testimonial-card reveal">
-          <blockquote>"The appointments actually show up. That alone puts Rylo in a different category from every other lead service I've tried. These are real, qualified buyers."</blockquote>
+          <blockquote>"The <span class="booked-emphasis">booked appointments</span> actually show up. That alone puts Rylo in a different category from every other lead service I've tried. These are real, qualified buyers."</blockquote>
           <div class="author">Marcus C.</div>
           <div class="location">San Diego, CA</div>
         </div>
 
         <div class="testimonial-card reveal">
-          <blockquote>"Two closings in my first month. The ROI isn't even a question. For any serious agent, this is a no-brainer."</blockquote>
+          <blockquote>"Two closings in my first month. The ROI isn't even a question. For any serious agent, this is a no-brainer. The <span class="booked-emphasis">booked appointments</span> were pre-qualified and ready to go."</blockquote>
           <div class="author">Jennifer R.</div>
           <div class="location">Miami, FL</div>
         </div>
 
         <div class="testimonial-card reveal">
-          <blockquote>"I was skeptical because I've been burned before. But I didn't pay anything until I had a booked appointment — so I had nothing to lose. Now I'm a believer."</blockquote>
+          <blockquote>"I was skeptical because I've been burned before. But I didn't pay anything until I had a <span class="booked-emphasis">booked appointment</span> — so I had nothing to lose. Now I'm a believer."</blockquote>
           <div class="author">David T.</div>
           <div class="location">Denver, CO</div>
         </div>
+      </div>
+
+      <div class="section-cta reveal">
+        <button class="btn-primary btn-large cta-button">Talk to Our Team</button>
       </div>
     </div>
   </section>
@@ -1663,71 +1718,177 @@
   <section class="final-cta">
     <div class="container reveal">
       <h2>Your Calendar Should Be Full of Closings, Not Cold Calls.</h2>
-      <p class="cta-sub">Book a free consultation. We'll talk about your market, your goals, and exactly how Rylo Platforms can deliver qualified appointments to your calendar — with zero upfront cost.</p>
-      <a href="https://calendly.com/ryloplatforms/30min?month=2026-02" target="_blank" rel="noopener" class="btn-primary btn-large">Schedule Your Free Consultation</a>
+      <p class="cta-sub">
+        Book a strategy call. We'll talk about your market, your goals, and exactly how Rylo Platforms delivers
+        <span class="booked-emphasis">qualified, booked appointments</span> to your calendar — with zero upfront cost.
+      </p>
+      <button class="btn-primary btn-large cta-button">Schedule Your Strategy Call</button>
     </div>
   </section>
 
   <!-- ============================================================
-       SECTION 8: FOOTER
+       FOOTER
        ============================================================ -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
+
         <div class="footer-brand">
-          <!-- Logo — replace triangle with <img> for actual logo PNG -->
-          <a href="#" class="logo">
-            <span class="logo-icon">&#9650;</span>
+          <a href="#" class="footer-logo">
+            <img src="https://i.imgur.com/97muSNQ.jpeg" alt="Rylo Platforms Logo" class="logo-img" style="height:38px;">
             <span class="logo-text">Rylo Platforms</span>
           </a>
-          <p class="tagline">Qualified appointments for real estate professionals.</p>
+          <p class="tagline">Qualified, confirmed appointments for real estate professionals.</p>
         </div>
 
         <div class="footer-links">
           <h4>Quick Links</h4>
           <ul>
             <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#why-rylo">Why Rylo</a></li>
             <li><a href="#pricing">Pricing</a></li>
             <li><a href="#results">Results</a></li>
-            <li><a href="https://calendly.com/ryloplatforms/30min?month=2026-02" target="_blank" rel="noopener">Schedule a Consultation</a></li>
           </ul>
         </div>
 
         <div class="footer-social">
           <h4>Follow Us</h4>
           <div class="social-links">
-            <!-- Instagram -->
             <a href="https://instagram.com/ryloplatforms.ai" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
             </a>
-            <!-- Facebook -->
             <a href="https://facebook.com/ryloplatforms" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
             </a>
           </div>
         </div>
+
       </div>
 
       <div class="footer-bottom">
-        &copy; 2025 Rylo Platforms. All rights reserved.
+        &copy; 2026 Rylo Platforms. All rights reserved.
       </div>
     </div>
   </footer>
 
   <!-- ============================================================
-       STICKY BOTTOM BAR — ALWAYS VISIBLE, NEVER HIDES
+       STICKY BOTTOM BAR — appears after scrolling past hero
        ============================================================ -->
-  <div class="sticky-bar">
-    <span class="sticky-bar-text">Your next closing is one consultation away.</span>
-    <a href="https://calendly.com/ryloplatforms/30min?month=2026-02" target="_blank" rel="noopener" class="btn-primary">Schedule a Consultation</a>
+  <div class="sticky-bar" id="stickyBar">
+    <span class="sticky-bar-text">Your next closing is one appointment away.</span>
+    <button class="btn-primary cta-button">Book a Consultation Now</button>
   </div>
 
   <!-- ============================================================
-       JAVASCRIPT — Scroll animations + Mobile menu
+       CALENDLY MODAL
+       ============================================================ -->
+  <div class="calendly-modal" id="calendlyModal">
+    <div class="modal-content">
+      <button class="modal-close" id="closeModal">&times;</button>
+      <div class="calendly-embed-container">
+        <iframe
+          src="https://calendly.com/ryloplatforms/30min?month=2026-02&embed=true"
+          width="100%"
+          height="700"
+          frameborder="0">
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       JAVASCRIPT
        ============================================================ -->
   <script>
     /* -------------------------------------------------------
-       IntersectionObserver — Scroll reveal animations
+       CALENDLY MODAL
+       ------------------------------------------------------- */
+    (function () {
+      var modal   = document.getElementById('calendlyModal');
+      var closeBtn = document.getElementById('closeModal');
+      var allCTAs  = document.querySelectorAll('.cta-button');
+
+      function openModal() {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      allCTAs.forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          openModal();
+        });
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) closeModal();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeModal();
+      });
+    })();
+
+    /* -------------------------------------------------------
+       STICKY BAR — show only after hero section
+       ------------------------------------------------------- */
+    (function () {
+      var stickyBar = document.getElementById('stickyBar');
+      var hero      = document.getElementById('hero');
+
+      window.addEventListener('scroll', function () {
+        var heroBottom = hero.offsetTop + hero.offsetHeight;
+        if (window.scrollY > heroBottom) {
+          stickyBar.classList.add('visible');
+        } else {
+          stickyBar.classList.remove('visible');
+        }
+      }, { passive: true });
+    })();
+
+    /* -------------------------------------------------------
+       APPOINTMENT COUNTER ANIMATION
+       ------------------------------------------------------- */
+    (function () {
+      var target  = 127;
+      var el      = document.getElementById('appointmentCounter');
+      var start   = 0;
+      var duration = 2000;
+      var startTime = null;
+
+      function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+      function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        var elapsed  = timestamp - startTime;
+        var progress = Math.min(elapsed / duration, 1);
+        el.textContent = Math.floor(easeOut(progress) * target);
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = target;
+      }
+
+      /* Start counter when hero is visible */
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            requestAnimationFrame(step);
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.3 });
+
+      observer.observe(document.getElementById('hero'));
+    })();
+
+    /* -------------------------------------------------------
+       SCROLL REVEAL
        ------------------------------------------------------- */
     (function () {
       var reveals = document.querySelectorAll('.reveal');
@@ -1740,27 +1901,19 @@
               observer.unobserve(entry.target);
             }
           });
-        }, {
-          threshold: 0.12,
-          rootMargin: '0px 0px -40px 0px'
-        });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-        reveals.forEach(function (el) {
-          observer.observe(el);
-        });
+        reveals.forEach(function (el) { observer.observe(el); });
       } else {
-        /* Fallback: just show everything */
-        reveals.forEach(function (el) {
-          el.classList.add('visible');
-        });
+        reveals.forEach(function (el) { el.classList.add('visible'); });
       }
     })();
 
     /* -------------------------------------------------------
-       Mobile hamburger menu
+       MOBILE HAMBURGER MENU
        ------------------------------------------------------- */
     (function () {
-      var hamburger = document.getElementById('hamburger');
+      var hamburger  = document.getElementById('hamburger');
       var mobileMenu = document.getElementById('mobile-menu');
       var mobileLinks = mobileMenu.querySelectorAll('.mobile-link');
 
@@ -1769,7 +1922,6 @@
         mobileMenu.classList.toggle('active');
       });
 
-      /* Close menu when a link is clicked */
       mobileLinks.forEach(function (link) {
         link.addEventListener('click', function () {
           hamburger.classList.remove('active');
@@ -1779,7 +1931,7 @@
     })();
 
     /* -------------------------------------------------------
-       Smooth scroll offset for fixed navbar
+       SMOOTH SCROLL (anchor links)
        ------------------------------------------------------- */
     (function () {
       document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
@@ -1789,13 +1941,13 @@
           var target = document.querySelector(targetId);
           if (target) {
             e.preventDefault();
-            var offset = 80;
-            var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            var top = target.getBoundingClientRect().top + window.pageYOffset - 80;
             window.scrollTo({ top: top, behavior: 'smooth' });
           }
         });
       });
     })();
   </script>
+
 </body>
 </html>
