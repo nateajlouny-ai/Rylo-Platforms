@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Strategy Call — Rylo Platforms</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:    #000000;
+      --midnight: #0B1F3A;
+      --steel:    #1E3F6D;
+      --electric: #00A8FF;
+      --silver:   #C9D2DC;
+      --bluegray: #6E87A6;
+      --card-bg:  #0D2240;
+      --border:   rgba(0, 168, 255, 0.15);
+      --glow:     rgba(0, 168, 255, 0.25);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--silver);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 2rem;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-logo span {
+      color: var(--electric);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 1.5rem 4rem;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 168, 255, 0.08) 0%, transparent 70%);
+      position: relative;
+    }
+
+    .hero-inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(0, 168, 255, 0.1);
+      border: 1px solid rgba(0, 168, 255, 0.3);
+      border-radius: 100px;
+      padding: 0.35rem 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--electric);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.8rem;
+    }
+
+    .badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--electric);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: #fff;
+      margin-bottom: 1.4rem;
+    }
+
+    h1 .grad {
+      background: linear-gradient(90deg, var(--electric), #a0d8ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--bluegray);
+      max-width: 600px;
+      margin: 0 auto 2.4rem;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--steel), var(--electric));
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 1rem 2.2rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: box-shadow 0.25s, transform 0.2s;
+      box-shadow: 0 0 24px var(--glow);
+    }
+
+    .cta-btn:hover {
+      box-shadow: 0 0 40px rgba(0, 168, 255, 0.45);
+      transform: translateY(-2px);
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: rgba(13, 34, 64, 0.5);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.2rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--bluegray);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .trust-item strong {
+      color: var(--electric);
+      font-size: 1rem;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 5rem 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--electric);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.8rem;
+    }
+
+    h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    h2 .grad {
+      background: linear-gradient(90deg, var(--electric), #a0d8ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-intro {
+      color: var(--bluegray);
+      max-width: 620px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── BENEFITS GRID ── */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 0;
+    }
+
+    .benefit-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.6rem;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+
+    .benefit-card:hover {
+      border-color: rgba(0, 168, 255, 0.35);
+      box-shadow: 0 0 20px rgba(0, 168, 255, 0.08);
+    }
+
+    .benefit-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    .benefit-card h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+
+    .benefit-card p {
+      font-size: 0.92rem;
+      color: var(--bluegray);
+    }
+
+    /* ── WHAT HAPPENS ── */
+    .steps-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.4rem 1.6rem;
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--steel), var(--electric));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #fff;
+      box-shadow: 0 0 12px var(--glow);
+    }
+
+    .step-body h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.25rem;
+    }
+
+    .step-body p {
+      font-size: 0.9rem;
+      color: var(--bluegray);
+    }
+
+    /* ── BOOKING SECTION ── */
+    .booking-section {
+      background: radial-gradient(ellipse 80% 100% at 50% 50%, rgba(0, 168, 255, 0.05) 0%, transparent 70%);
+      border-top: 1px solid var(--border);
+      padding: 5rem 1.5rem;
+    }
+
+    .booking-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 700px) {
+      .booking-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── LEAD FORM ── */
+    .form-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .form-card h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-card .form-sub {
+      font-size: 0.9rem;
+      color: var(--bluegray);
+      margin-bottom: 1.6rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--silver);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--silver);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      padding: 0.7rem 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--bluegray);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--electric);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .form-group select option {
+      background: var(--midnight);
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--steel), var(--electric));
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 0.9rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: box-shadow 0.25s, transform 0.2s;
+      box-shadow: 0 0 20px var(--glow);
+      margin-top: 0.5rem;
+    }
+
+    .submit-btn:hover {
+      box-shadow: 0 0 36px rgba(0, 168, 255, 0.4);
+      transform: translateY(-1px);
+    }
+
+    /* ── CALENDLY CARD ── */
+    .calendly-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .calendly-card-header {
+      padding: 1.4rem 1.6rem 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .calendly-card-header h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.3rem;
+    }
+
+    .calendly-card-header p {
+      font-size: 0.88rem;
+      color: var(--bluegray);
+    }
+
+    .calendly-card iframe {
+      border: none;
+      flex: 1;
+      min-height: 520px;
+    }
+
+    /* ── DIVIDER ── */
+    .or-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: var(--bluegray);
+      font-size: 0.85rem;
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin: 0.5rem 0;
+    }
+
+    .or-divider::before,
+    .or-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── SUCCESS STATE ── */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .form-success .success-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-success h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-success p {
+      color: var(--bluegray);
+      font-size: 0.95rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--bluegray);
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: var(--electric);
+      text-decoration: none;
+    }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 480px) {
+      .trust-bar { gap: 1.2rem; }
+      section { padding: 3.5rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Rylo<span>.</span></a>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="hero">
+    <div class="hero-inner">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Limited spots available this month
+      </div>
+      <h1>Stop Chasing Leads.<br /><span class="grad">Start Closing Calls.</span></h1>
+      <p class="hero-sub">
+        We fill your calendar with qualified, ready-to-buy appointments — so you can focus on what you do best: closing deals.
+      </p>
+      <a href="#book" class="cta-btn">Book a Free Strategy Call</a>
+    </div>
+  </header>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item"><strong>100%</strong> Done-for-you</div>
+    <div class="trust-item"><strong>30-min</strong> Free call</div>
+    <div class="trust-item"><strong>No</strong> Long-term contracts</div>
+    <div class="trust-item"><strong>Pay</strong> Per result</div>
+  </div>
+
+  <!-- BENEFITS -->
+  <section class="reveal">
+    <div class="section-label">What You Get</div>
+    <h2>A Full Pipeline Without <span class="grad">Lifting a Finger</span></h2>
+    <p class="section-intro">
+      Rylo Platforms handles your entire outbound lead generation — from targeting to booking — so your calendar fills itself.
+    </p>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <span class="benefit-icon">🎯</span>
+        <h3>Hyper-Targeted Outreach</h3>
+        <p>We identify and reach your ideal clients using AI-driven targeting, not spray-and-pray tactics.</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">📅</span>
+        <h3>Appointments on Your Calendar</h3>
+        <p>Qualified prospects book directly into your calendar. No chasing, no cold calling on your end.</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">⚡</span>
+        <h3>Fast Ramp-Up</h3>
+        <p>Most clients see their first booked appointments within the first two weeks of launching.</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">📊</span>
+        <h3>Full Transparency</h3>
+        <p>Live dashboards and regular updates so you always know exactly what's working and what's coming in.</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">🤝</span>
+        <h3>Pay Per Result</h3>
+        <p>Our pricing is tied to performance. We win when you win — no fluff retainers.</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">🔒</span>
+        <h3>No Long-Term Lock-In</h3>
+        <p>Month-to-month flexibility. Stay because it works, not because you're locked in.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT HAPPENS ON THE CALL -->
+  <section class="reveal">
+    <div class="section-label">The Process</div>
+    <h2>What Happens on the <span class="grad">Strategy Call</span></h2>
+    <p class="section-intro">
+      This is a no-pressure, 30-minute conversation — not a sales pitch. Here's exactly what we'll cover:
+    </p>
+    <ul class="steps-list">
+      <li class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>We Learn Your Business</h3>
+          <p>We'll understand your offer, your ideal client, and what a qualified appointment looks like for you.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>We Audit Your Current Lead Flow</h3>
+          <p>We identify exactly where you're leaving money on the table and what's costing you deals right now.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>We Map Out a Custom Strategy</h3>
+          <p>You'll leave with a clear game plan for how we'd fill your pipeline — whether we work together or not.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>If It's a Fit, We Move Fast</h3>
+          <p>Onboarding is quick. If it makes sense for both sides, we can have your first campaign live within days.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- BOOKING SECTION -->
+  <div class="booking-section" id="book">
+    <div class="booking-inner">
+      <div style="text-align:center; margin-bottom:2.5rem;">
+        <div class="section-label" style="justify-content:center; display:flex;">Book Now</div>
+        <h2>Ready to Fill Your Calendar?</h2>
+        <p style="color:var(--bluegray); max-width:520px; margin:0 auto;">
+          Tell us a bit about your business below or jump straight to booking a time that works for you.
+        </p>
+      </div>
+
+      <div class="booking-grid">
+
+        <!-- LEAD FORM -->
+        <div class="form-card reveal">
+          <div id="formWrapper">
+            <h3>Tell Us About Your Business</h3>
+            <p class="form-sub">We'll reach out within 24 hours to confirm your spot.</p>
+            <form id="leadForm">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="John Smith" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="john@company.com" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" />
+              </div>
+              <div class="form-group">
+                <label for="industry">What Industry Are You In?</label>
+                <select id="industry" name="industry" required>
+                  <option value="" disabled selected>Select your industry</option>
+                  <option>Real Estate</option>
+                  <option>Insurance</option>
+                  <option>Finance / Lending</option>
+                  <option>Agency / Marketing</option>
+                  <option>Coaching / Consulting</option>
+                  <option>Home Services</option>
+                  <option>Healthcare / MedSpa</option>
+                  <option>E-commerce / Retail</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="goal">What's your biggest challenge right now?</label>
+                <textarea id="goal" name="goal" placeholder="e.g. Not enough qualified leads, too much time chasing prospects..."></textarea>
+              </div>
+              <button type="submit" class="submit-btn">Send My Info &rarr;</button>
+            </form>
+          </div>
+
+          <div class="form-success" id="formSuccess">
+            <div class="success-icon">✅</div>
+            <h3>You're on the list!</h3>
+            <p>We'll be in touch within 24 hours to confirm your call.<br />Or skip the wait and book a time directly below.</p>
+          </div>
+        </div>
+
+        <!-- CALENDLY -->
+        <div class="calendly-card reveal">
+          <div class="calendly-card-header">
+            <h3>Book a Time Directly</h3>
+            <p>Skip the form — pick a slot that works and we'll talk then.</p>
+          </div>
+          <iframe
+            src="https://calendly.com/ryloplatforms/30min?embed=true&hide_gdpr_banner=1"
+            title="Schedule a strategy call with Rylo Platforms"
+            loading="lazy">
+          </iframe>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 Rylo Platforms &mdash; <a href="/">ryloplatforms.com</a></p>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Lead form submit
+    document.getElementById('leadForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('formWrapper').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
