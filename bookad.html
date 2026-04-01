@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Call — Rilo Platforms</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent:       #0095E8;
+      --accent-dim:   rgba(0, 149, 232, 0.10);
+      --text:         #0F172A;
+      --subtext:      #64748B;
+      --border:       #E2E8F0;
+      --bg:           #F8FAFC;
+      --surface:      #FFFFFF;
+      --header-h:     60px;
+    }
+
+    /* Prevent scroll on desktop */
+    html {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      line-height: 1.65;
+      overflow: hidden;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--header-h);
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 52px;
+      z-index: 10;
+    }
+
+    .wordmark {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: -0.025em;
+      color: var(--text);
+      text-decoration: none;
+      user-select: none;
+    }
+
+    .wordmark em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    /* ── MAIN LAYOUT ── */
+    main {
+      position: fixed;
+      top: var(--header-h);
+      left: 0; right: 0; bottom: 0;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .layout {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 52px;
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 56px;
+      align-items: center;
+      height: 100%;
+    }
+
+    /* ── LEFT: INFO PANEL ── */
+    .info-panel {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .call-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border-radius: 6px;
+      padding: 5px 11px;
+      margin-bottom: 22px;
+      width: fit-content;
+    }
+
+    .call-label-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .info-panel h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.75rem, 2.2vw, 2.35rem);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.18;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+    }
+
+    .info-panel p {
+      font-size: 0.97rem;
+      color: var(--subtext);
+      line-height: 1.7;
+      margin-bottom: 32px;
+      max-width: 320px;
+    }
+
+    /* Divider */
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: var(--border);
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+
+    /* Value props */
+    .props {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .props li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.92rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .prop-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ── RIGHT: CALENDAR ── */
+    .calendar-panel {
+      height: calc(100vh - var(--header-h) - 40px);
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+    }
+
+    /* Override Calendly widget container */
+    .calendly-inline-widget {
+      flex: 1 !important;
+      height: 100% !important;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    /* ── RESPONSIVE FALLBACK ── */
+    @media (max-width: 960px) {
+      html, body { overflow: auto; height: auto; }
+      main { position: relative; top: 0; height: auto; margin-top: var(--header-h); padding: 48px 0 40px; }
+      .layout {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        padding: 0 28px;
+      }
+      .info-panel h1 { font-size: 1.9rem; }
+      .info-panel p { max-width: none; }
+      .calendar-panel { height: 660px; align-self: auto; }
+    }
+
+    @media (max-width: 480px) {
+      header { padding: 0 24px; }
+      .layout { padding: 0 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="#" class="wordmark">Rilo <em>Platforms</em></a>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+    <div class="layout">
+
+      <!-- LEFT: INFO PANEL -->
+      <div class="info-panel">
+        <span class="call-label">
+          <span class="call-label-dot"></span>
+          Intro Call
+        </span>
+
+        <h1>Book directly with&nbsp;Rilo&nbsp;Platforms</h1>
+
+        <p>
+          A quick 10–15 minute call to see if we're the right fit. No pitch, no pressure — just a real conversation about what you're working on.
+        </p>
+
+        <div class="divider"></div>
+
+        <ul class="props">
+          <li><span class="prop-dot"></span> No commitment required</li>
+          <li><span class="prop-dot"></span> 10–15 minutes</li>
+          <li><span class="prop-dot"></span> Talk to a real person</li>
+        </ul>
+      </div>
+
+      <!-- RIGHT: CALENDLY INLINE EMBED -->
+      <div class="calendar-panel">
+        <div
+          class="calendly-inline-widget"
+          data-url="https://calendly.com/ryloplatforms/30min?hide_gdpr_banner=1&background_color=ffffff&text_color=0f172a&primary_color=0095e8"
+        ></div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+</body>
+</html>
