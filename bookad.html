@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Book a Call — Rilo Platforms</title>
+  <title>Book a Call — Rylo Platforms</title>
   <meta name="robots" content="noindex, nofollow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,47 +14,52 @@
     :root {
       --accent:       #0095E8;
       --accent-dim:   rgba(0, 149, 232, 0.10);
-      --text:         #0F172A;
+      --text:         #0B1F3A;
       --subtext:      #64748B;
+      --muted:        #94A3B8;
       --border:       #E2E8F0;
       --bg:           #F8FAFC;
       --surface:      #FFFFFF;
       --header-h:     60px;
     }
 
-    /* Prevent scroll on desktop */
     html {
-      height: 100%;
-      overflow: hidden;
+      scroll-behavior: smooth;
     }
 
     body {
-      height: 100%;
       background: var(--bg);
       color: var(--text);
       font-family: 'DM Sans', sans-serif;
       font-size: 1rem;
       line-height: 1.65;
-      overflow: hidden;
     }
 
     /* ── HEADER ── */
     header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
+      position: sticky;
+      top: 0;
       height: var(--header-h);
-      background: var(--surface);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
+      justify-content: space-between;
       padding: 0 52px;
-      z-index: 10;
+      z-index: 100;
+    }
+
+    #logo-placeholder {
+      display: flex;
+      align-items: center;
     }
 
     .wordmark {
       font-family: 'Sora', sans-serif;
       font-weight: 700;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       letter-spacing: -0.025em;
       color: var(--text);
       text-decoration: none;
@@ -66,25 +71,41 @@
       color: var(--accent);
     }
 
-    /* ── MAIN LAYOUT ── */
-    main {
-      position: fixed;
-      top: var(--header-h);
-      left: 0; right: 0; bottom: 0;
+    .header-cta {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid rgba(0, 149, 232, 0.2);
+      border-radius: 8px;
+      padding: 8px 18px;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+
+    .header-cta:hover {
+      background: rgba(0, 149, 232, 0.16);
+      border-color: rgba(0, 149, 232, 0.35);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: calc(100vh - var(--header-h));
       display: flex;
-      align-items: stretch;
+      align-items: center;
     }
 
     .layout {
       width: 100%;
       max-width: 1280px;
       margin: 0 auto;
-      padding: 0 52px;
+      padding: 56px 52px 64px;
       display: grid;
-      grid-template-columns: 360px 1fr;
-      gap: 56px;
+      grid-template-columns: 380px 1fr;
+      gap: 64px;
       align-items: center;
-      height: 100%;
     }
 
     /* ── LEFT: INFO PANEL ── */
@@ -97,20 +118,21 @@
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 600;
-      letter-spacing: 0.09em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--accent);
       background: var(--accent-dim);
       border-radius: 6px;
       padding: 5px 11px;
-      margin-bottom: 22px;
+      margin-bottom: 26px;
       width: fit-content;
     }
 
     .call-label-dot {
-      width: 6px; height: 6px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
       background: var(--accent);
       flex-shrink: 0;
@@ -118,29 +140,20 @@
 
     .info-panel h1 {
       font-family: 'Sora', sans-serif;
-      font-size: clamp(1.75rem, 2.2vw, 2.35rem);
+      font-size: clamp(1.85rem, 2.4vw, 2.6rem);
       font-weight: 700;
       color: var(--text);
-      line-height: 1.18;
-      letter-spacing: -0.03em;
-      margin-bottom: 18px;
+      line-height: 1.15;
+      letter-spacing: -0.035em;
+      margin-bottom: 20px;
     }
 
-    .info-panel p {
+    .info-panel .subtext {
       font-size: 0.97rem;
       color: var(--subtext);
-      line-height: 1.7;
-      margin-bottom: 32px;
-      max-width: 320px;
-    }
-
-    /* Divider */
-    .divider {
-      width: 40px;
-      height: 2px;
-      background: var(--border);
-      border-radius: 2px;
-      margin-bottom: 28px;
+      line-height: 1.78;
+      margin-bottom: 38px;
+      max-width: 340px;
     }
 
     /* Value props */
@@ -148,37 +161,66 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 18px;
+      margin-bottom: 38px;
     }
 
     .props li {
       display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.92rem;
-      color: var(--text);
-      font-weight: 500;
+      align-items: flex-start;
+      gap: 14px;
     }
 
-    .prop-dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: var(--accent);
+    .prop-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: var(--accent-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .prop-icon svg {
+      width: 16px;
+      height: 16px;
+      color: var(--accent);
+    }
+
+    .prop-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .prop-label {
+      font-size: 0.93rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .prop-desc {
+      font-size: 0.83rem;
+      color: var(--subtext);
+      line-height: 1.5;
+      margin-top: 3px;
+    }
+
+    .social-proof {
+      font-size: 0.82rem;
+      color: var(--muted);
+      letter-spacing: 0.01em;
     }
 
     /* ── RIGHT: CALENDAR ── */
-    .calendar-panel {
-      height: calc(100vh - var(--header-h) - 40px);
-      min-height: 600px;
-      display: flex;
-      flex-direction: column;
-      align-self: center;
+    #calendar {
+      height: calc(100vh - var(--header-h) - 80px);
+      min-height: 650px;
     }
 
-    /* Override Calendly widget container */
     .calendly-inline-widget {
-      flex: 1 !important;
       height: 100% !important;
       border-radius: 12px;
       overflow: hidden;
@@ -186,23 +228,102 @@
       background: var(--surface);
     }
 
-    /* ── RESPONSIVE FALLBACK ── */
+    /* ── FAQ ── */
+    .faq-section {
+      border-top: 1px solid var(--border);
+      padding: 80px 52px 100px;
+    }
+
+    .faq-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .faq-section h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.025em;
+      margin-bottom: 40px;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .faq-item {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-item:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .faq-q {
+      font-family: 'Sora', sans-serif;
+      font-size: 0.96rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .faq-a {
+      font-size: 0.93rem;
+      color: var(--subtext);
+      line-height: 1.72;
+    }
+
+    .faq-contact {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: var(--subtext);
+    }
+
+    .faq-contact a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .faq-contact a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
-      html, body { overflow: auto; height: auto; }
-      main { position: relative; top: 0; height: auto; margin-top: var(--header-h); padding: 48px 0 40px; }
+      .hero {
+        min-height: auto;
+      }
       .layout {
         grid-template-columns: 1fr;
-        gap: 36px;
-        padding: 0 28px;
+        gap: 40px;
+        padding: 48px 28px 40px;
       }
-      .info-panel h1 { font-size: 1.9rem; }
-      .info-panel p { max-width: none; }
-      .calendar-panel { height: 660px; align-self: auto; }
+      .info-panel .subtext {
+        max-width: none;
+      }
+      #calendar {
+        height: 680px;
+      }
+      .faq-section {
+        padding: 60px 28px 80px;
+      }
     }
 
     @media (max-width: 480px) {
-      header { padding: 0 24px; }
-      .layout { padding: 0 20px; }
+      header {
+        padding: 0 20px;
+      }
+      .layout {
+        padding: 36px 20px 32px;
+      }
+      .faq-section {
+        padding: 48px 20px 64px;
+      }
     }
   </style>
 </head>
@@ -210,46 +331,128 @@
 
   <!-- HEADER -->
   <header>
-    <a href="#" class="wordmark">Rilo <em>Platforms</em></a>
+    <div id="logo-placeholder">
+      <!-- Replace the anchor below with your SVG logo when ready -->
+      <a href="/" class="wordmark">Rylo <em>Platforms</em></a>
+    </div>
+    <a href="#calendar" class="header-cta">Book a call</a>
   </header>
 
-  <!-- MAIN -->
-  <main>
+  <!-- HERO -->
+  <section class="hero" aria-label="Booking intro">
     <div class="layout">
 
       <!-- LEFT: INFO PANEL -->
       <div class="info-panel">
-        <span class="call-label">
+        <span class="call-label" aria-hidden="true">
           <span class="call-label-dot"></span>
           Intro Call
         </span>
 
-        <h1>Book directly with&nbsp;Rilo&nbsp;Platforms</h1>
+        <h1>Let's talk.<br>No pitch,<br>no pressure.</h1>
 
-        <p>
-          A quick 10–15 minute call to see if we're the right fit. No pitch, no pressure — just a real conversation about what you're working on.
+        <p class="subtext">
+          A quick 10–15 minute intro call to see if we're the right fit. You'll speak directly with someone from our team — no commitment, no hard sell. Just an honest conversation about what you're building.
         </p>
 
-        <div class="divider"></div>
-
-        <ul class="props">
-          <li><span class="prop-dot"></span> No commitment required</li>
-          <li><span class="prop-dot"></span> 10–15 minutes</li>
-          <li><span class="prop-dot"></span> Talk to a real person</li>
+        <ul class="props" aria-label="What to expect">
+          <li>
+            <span class="prop-icon" aria-hidden="true">
+              <!-- Clock icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </span>
+            <span class="prop-text">
+              <span class="prop-label">15 minutes</span>
+              <span class="prop-desc">Quick and to the point</span>
+            </span>
+          </li>
+          <li>
+            <span class="prop-icon" aria-hidden="true">
+              <!-- Handshake / no-commitment icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                <line x1="6" y1="1" x2="6" y2="4"/>
+                <line x1="10" y1="1" x2="10" y2="4"/>
+                <line x1="14" y1="1" x2="14" y2="4"/>
+              </svg>
+            </span>
+            <span class="prop-text">
+              <span class="prop-label">No commitment</span>
+              <span class="prop-desc">Just an honest conversation</span>
+            </span>
+          </li>
+          <li>
+            <span class="prop-icon" aria-hidden="true">
+              <!-- Person icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+            </span>
+            <span class="prop-text">
+              <span class="prop-label">Real people</span>
+              <span class="prop-desc">Not a sales funnel</span>
+            </span>
+          </li>
         </ul>
+
+        <p class="social-proof">Trusted by teams building what's next.</p>
       </div>
 
       <!-- RIGHT: CALENDLY INLINE EMBED -->
-      <div class="calendar-panel">
+      <!-- Replace INSERT_CALENDLY_URL_HERE with your Calendly link -->
+      <div id="calendar" aria-label="Booking calendar">
         <div
           class="calendly-inline-widget"
-          data-url="https://calendly.com/ryloplatforms/30min?hide_gdpr_banner=1&background_color=ffffff&text_color=0f172a&primary_color=0095e8"
+          data-url="INSERT_CALENDLY_URL_HERE?hide_event_type_details=1&hide_gdpr_banner=1&background_color=ffffff&text_color=0b1f3a&primary_color=0095e8"
+          style="height:100%"
         ></div>
       </div>
 
     </div>
-  </main>
+  </section>
 
+  <!-- FAQ -->
+  <section class="faq-section" aria-label="Frequently asked questions">
+    <div class="faq-inner">
+      <h2>Questions? Here are a few common ones.</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <p class="faq-q">What happens after I book?</p>
+          <p class="faq-a">You'll receive a calendar invite with a video or phone link. We'll show up on time, ready to listen.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-q">Who will I be speaking with?</p>
+          <p class="faq-a">Someone from the Rylo Platforms team — not a junior SDR or an AI chatbot. A real person who can answer real questions.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-q">Is this a sales call?</p>
+          <p class="faq-a">It's an intro call. We want to understand what you're working on and see if we can actually help. No pitch if there's no fit.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-q">What should I prepare?</p>
+          <p class="faq-a">Nothing formal — just a rough idea of what you're building or what problem you're trying to solve. We'll take it from there.</p>
+        </div>
+      </div>
+      <p class="faq-contact">Still have questions? Reach out at <a href="mailto:hello@ryloplatforms.com">hello@ryloplatforms.com</a></p>
+    </div>
+  </section>
+
+  <!-- Calendly embed script — must load before the event listener below -->
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+  <!-- Redirect to /thank-you immediately after booking is confirmed -->
+  <script>
+    window.addEventListener('message', function(e) {
+      if (e.data.event && e.data.event === 'calendly.event_scheduled') {
+        window.location.href = '/thank-you';
+      }
+    });
+  </script>
+
 </body>
 </html>

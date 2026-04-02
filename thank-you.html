@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You're Booked — Rylo Platforms</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent:       #0095E8;
+      --accent-dim:   rgba(0, 149, 232, 0.10);
+      --text:         #0B1F3A;
+      --subtext:      #64748B;
+      --border:       #E2E8F0;
+      --bg:           #F8FAFC;
+      --surface:      #FFFFFF;
+      --header-h:     60px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      line-height: 1.65;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── HEADER ── */
+    header {
+      height: var(--header-h);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 52px;
+      flex-shrink: 0;
+    }
+
+    #logo-placeholder {
+      display: flex;
+      align-items: center;
+    }
+
+    .wordmark {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: -0.025em;
+      color: var(--text);
+      text-decoration: none;
+      user-select: none;
+    }
+
+    .wordmark em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    /* ── MAIN CONTENT ── */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 64px 24px;
+    }
+
+    .confirmation {
+      text-align: center;
+      max-width: 460px;
+    }
+
+    /* Success icon */
+    .check-wrap {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(0, 149, 232, 0.08);
+      border: 1.5px solid rgba(0, 149, 232, 0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 36px;
+    }
+
+    .check-wrap svg {
+      width: 28px;
+      height: 28px;
+      color: var(--accent);
+    }
+
+    .confirmation h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3rem);
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.045em;
+      line-height: 1.05;
+      margin-bottom: 22px;
+    }
+
+    .confirmation p {
+      font-size: 1rem;
+      color: var(--subtext);
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+
+    /* Ghost / outline button */
+    .btn-ghost {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      background: transparent;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 11px 26px;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 0 20px;
+      }
+      main {
+        padding: 48px 20px;
+        align-items: flex-start;
+        padding-top: 64px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       CONVERSION PIXEL — PASTE YOUR META / GOOGLE TAG HERE
+       This page fires on every confirmed booking (/thank-you)
+       ============================================================ -->
+
+  <!-- HEADER -->
+  <header>
+    <div id="logo-placeholder">
+      <!-- Replace the anchor below with your SVG logo when ready -->
+      <a href="/" class="wordmark">Rylo <em>Platforms</em></a>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+    <div class="confirmation">
+
+      <!-- Success checkmark icon -->
+      <div class="check-wrap" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+
+      <h1>You're booked.</h1>
+
+      <p>
+        Thanks for scheduling time with Rylo Platforms.<br>
+        We'll send a calendar invite shortly.<br>
+        Looking forward to the conversation.
+      </p>
+
+      <!-- Replace INSERT_CALENDLY_CONFIRMATION_URL_HERE with your Calendly confirmation link -->
+      <a href="INSERT_CALENDLY_CONFIRMATION_URL_HERE" class="btn-ghost">Add to calendar</a>
+
+    </div>
+  </main>
+
+</body>
+</html>
