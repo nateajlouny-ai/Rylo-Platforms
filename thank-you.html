@@ -5,27 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>You're Booked — Rylo Platforms</title>
   <meta name="robots" content="noindex, nofollow" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
-      --accent:       #0095E8;
-      --accent-dim:   rgba(0, 149, 232, 0.10);
-      --text:         #0B1F3A;
+      --bg:           #F0F2F5;
+      --surface:      #FFFFFF;
+      --navy:         #0F172A;
+      --blue:         #3B82F6;
+      --blue-light:   #EFF6FF;
+      --green:        #22C55E;
+      --green-light:  #F0FDF4;
+      --green-mid:    #BBF7D0;
       --subtext:      #64748B;
       --border:       #E2E8F0;
-      --bg:           #F8FAFC;
-      --surface:      #FFFFFF;
+      --font:         -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       --header-h:     60px;
+      --radius:       12px;
+      --radius-sm:    8px;
+    }
+
+    html, body {
+      min-height: 100%;
     }
 
     body {
       background: var(--bg);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
+      color: var(--navy);
+      font-family: var(--font);
       font-size: 1rem;
       line-height: 1.65;
       min-height: 100vh;
@@ -33,7 +47,9 @@
       flex-direction: column;
     }
 
-    /* ── HEADER ── */
+    /* ============================================================
+       HEADER
+    ============================================================ */
     header {
       height: var(--header-h);
       background: rgba(255, 255, 255, 0.96);
@@ -42,109 +58,317 @@
       border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
-      padding: 0 52px;
+      padding: 0 48px;
       flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
-    #logo-placeholder {
-      display: flex;
-      align-items: center;
-    }
-
-    .wordmark {
-      font-family: 'Sora', sans-serif;
-      font-weight: 700;
+    .logo {
+      font-weight: 800;
       font-size: 1.15rem;
-      letter-spacing: -0.025em;
-      color: var(--text);
+      letter-spacing: -0.02em;
+      color: var(--navy);
       text-decoration: none;
       user-select: none;
     }
 
-    .wordmark em {
-      font-style: normal;
-      color: var(--accent);
+    .logo-blue {
+      color: var(--blue);
     }
 
-    /* ── MAIN CONTENT ── */
+    /* ============================================================
+       PAGE LAYOUT
+    ============================================================ */
     main {
+      flex: 1;
+      display: flex;
+      align-items: stretch;
+      min-height: calc(100vh - var(--header-h));
+    }
+
+    /* ============================================================
+       LEFT PANEL
+    ============================================================ */
+    .left-panel {
+      flex: 0 0 42%;
+      background: var(--navy);
+      padding: 64px 52px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 100%;
+    }
+
+    /* Green checkmark circle */
+    .check-circle {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(34, 197, 94, 0.12);
+      border: 1.5px solid rgba(34, 197, 94, 0.30);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 32px;
+      flex-shrink: 0;
+    }
+
+    .check-circle svg {
+      width: 30px;
+      height: 30px;
+      color: var(--green);
+    }
+
+    /* Heading */
+    .left-panel h1 {
+      font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .left-panel .subheading {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--green);
+      margin-bottom: 16px;
+    }
+
+    .left-panel .body-copy {
+      font-size: 0.975rem;
+      color: #94A3B8;
+      line-height: 1.8;
+      margin-bottom: 44px;
+      max-width: 400px;
+    }
+
+    /* What-to-expect rows */
+    .expect-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 52px;
+    }
+
+    .expect-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .expect-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(34, 197, 94, 0.10);
+      border: 1px solid rgba(34, 197, 94, 0.20);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .expect-icon svg {
+      width: 16px;
+      height: 16px;
+      color: var(--green);
+    }
+
+    .expect-text strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.3;
+    }
+
+    .expect-text span {
+      font-size: 0.82rem;
+      color: #64748B;
+    }
+
+    /* Footer line */
+    .left-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 24px;
+    }
+
+    .left-footer p {
+      font-size: 0.8rem;
+      color: #475569;
+    }
+
+    .left-footer a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .left-footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ============================================================
+       RIGHT PANEL
+    ============================================================ */
+    .right-panel {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 64px 24px;
+      padding: 56px 48px;
     }
 
-    .confirmation {
-      text-align: center;
-      max-width: 460px;
+    .faq-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
+      padding: 40px 40px;
+      width: 100%;
+      max-width: 520px;
     }
 
-    /* Success icon */
-    .check-wrap {
-      width: 72px;
-      height: 72px;
+    .faq-heading {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+
+    /* ============================================================
+       ACCORDION
+    ============================================================ */
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .accordion-item:last-child {
+      border-bottom: none;
+    }
+
+    .accordion-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: var(--surface);
+      border: none;
+      padding: 16px 20px;
+      cursor: pointer;
+      font-family: var(--font);
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-align: left;
+      line-height: 1.4;
+      transition: background 0.15s;
+    }
+
+    .accordion-trigger:hover {
+      background: #F8FAFC;
+    }
+
+    .accordion-trigger[aria-expanded="true"] {
+      background: var(--blue-light);
+      color: var(--blue);
+    }
+
+    .accordion-icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
-      background: rgba(0, 149, 232, 0.08);
-      border: 1.5px solid rgba(0, 149, 232, 0.22);
+      background: var(--bg);
+      border: 1.5px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 36px;
-    }
-
-    .check-wrap svg {
-      width: 28px;
-      height: 28px;
-      color: var(--accent);
-    }
-
-    .confirmation h1 {
-      font-family: 'Sora', sans-serif;
-      font-size: clamp(2.2rem, 5vw, 3rem);
+      font-size: 0.95rem;
       font-weight: 700;
-      color: var(--text);
-      letter-spacing: -0.045em;
-      line-height: 1.05;
-      margin-bottom: 22px;
-    }
-
-    .confirmation p {
-      font-size: 1rem;
       color: var(--subtext);
-      line-height: 1.8;
-      margin-bottom: 40px;
+      line-height: 1;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+      user-select: none;
     }
 
-    /* Ghost / outline button */
-    .btn-ghost {
-      display: inline-block;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text);
-      background: transparent;
-      border: 1.5px solid var(--border);
-      border-radius: 8px;
-      padding: 11px 26px;
-      text-decoration: none;
-      transition: border-color 0.2s, color 0.2s;
-      letter-spacing: 0.01em;
+    .accordion-trigger[aria-expanded="true"] .accordion-icon {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #FFFFFF;
     }
 
-    .btn-ghost:hover {
-      border-color: var(--accent);
-      color: var(--accent);
+    .accordion-body {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.28s ease, padding 0.28s ease;
+      background: #FAFBFC;
     }
 
-    @media (max-width: 480px) {
+    .accordion-body.open {
+      max-height: 400px;
+    }
+
+    .accordion-body-inner {
+      padding: 0 20px 18px 20px;
+      font-size: 0.875rem;
+      color: var(--subtext);
+      line-height: 1.75;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 900px) {
+      .left-panel {
+        flex: 0 0 38%;
+        padding: 48px 36px;
+      }
+      .right-panel {
+        padding: 48px 32px;
+      }
+      .faq-card {
+        padding: 32px 28px;
+      }
+    }
+
+    @media (max-width: 768px) {
       header {
         padding: 0 20px;
       }
+
       main {
-        padding: 48px 20px;
-        align-items: flex-start;
-        padding-top: 64px;
+        flex-direction: column;
+        min-height: auto;
+      }
+
+      .left-panel {
+        flex: 0 0 auto;
+        padding: 40px 24px;
+        min-height: auto;
+      }
+
+      .right-panel {
+        padding: 32px 20px;
+      }
+
+      .faq-card {
+        padding: 28px 20px;
+        max-width: 100%;
       }
     }
   </style>
@@ -152,42 +376,230 @@
 <body>
 
   <!-- ============================================================
-       CONVERSION PIXEL — PASTE YOUR META / GOOGLE TAG HERE
-       This page fires on every confirmed booking (/thank-you)
-       ============================================================ -->
+       CONVERSION PIXEL — paste Meta/Google tag here
+       This page fires on every confirmed booking
+  ============================================================ -->
 
-  <!-- HEADER -->
+  <!-- ============================================================
+       HEADER
+  ============================================================ -->
   <header>
-    <div id="logo-placeholder">
-      <!-- Replace the anchor below with your SVG logo when ready -->
-      <a href="/" class="wordmark">Rylo <em>Platforms</em></a>
-    </div>
+    <a href="/" style="text-decoration:none;">
+      <span class="logo">Rylo<span class="logo-blue">Platforms</span></span>
+    </a>
   </header>
 
-  <!-- MAIN -->
+  <!-- ============================================================
+       MAIN LAYOUT
+  ============================================================ -->
   <main>
-    <div class="confirmation">
 
-      <!-- Success checkmark icon -->
-      <div class="check-wrap" aria-hidden="true">
+    <!-- LEFT PANEL -->
+    <aside class="left-panel">
+
+      <!-- Green checkmark circle -->
+      <div class="check-circle" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="20 6 9 17 4 12"/>
         </svg>
       </div>
 
-      <h1>You're booked.</h1>
+      <!-- Heading -->
+      <h1>You're booked in.</h1>
+      <p class="subheading">We'll see you soon.</p>
 
-      <p>
-        Thanks for scheduling time with Rylo Platforms.<br>
-        We'll send a calendar invite shortly.<br>
-        Looking forward to the conversation.
+      <!-- Body copy -->
+      <p class="body-copy">
+        You're all set. Check your inbox for a confirmation email. We're looking forward to speaking with you.
       </p>
 
-      <!-- Replace INSERT_CALENDLY_CONFIRMATION_URL_HERE with your Calendly confirmation link -->
-      <a href="INSERT_CALENDLY_CONFIRMATION_URL_HERE" class="btn-ghost">Add to calendar</a>
+      <!-- What to expect rows -->
+      <div class="expect-rows">
 
-    </div>
+        <!-- Inbox icon -->
+        <div class="expect-row">
+          <div class="expect-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/>
+              <path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/>
+            </svg>
+          </div>
+          <div class="expect-text">
+            <strong>Confirmation email</strong>
+            <span>Check your inbox — we'll send details shortly</span>
+          </div>
+        </div>
+
+        <!-- Clock icon -->
+        <div class="expect-row">
+          <div class="expect-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div class="expect-text">
+            <strong>15 minutes, your time</strong>
+            <span>We'll be brief, respectful, and ready</span>
+          </div>
+        </div>
+
+        <!-- Speech bubble icon -->
+        <div class="expect-row">
+          <div class="expect-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <div class="expect-text">
+            <strong>Honest conversation</strong>
+            <span>No script, no pressure — just a real chat</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <div class="left-footer">
+        <p>Questions? Reach us at <a href="mailto:hello@ryloplatforms.com">hello@ryloplatforms.com</a></p>
+      </div>
+
+    </aside>
+
+    <!-- RIGHT PANEL -->
+    <section class="right-panel">
+      <div class="faq-card">
+
+        <h2 class="faq-heading">Common questions</h2>
+
+        <!-- ── ACCORDION ── -->
+        <div class="accordion" id="faq-accordion">
+
+          <!-- FAQ 1 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-body-1" id="faq-btn-1">
+              What happens on the call?
+              <span class="accordion-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="accordion-body" id="faq-body-1" role="region" aria-labelledby="faq-btn-1">
+              <div class="accordion-body-inner">
+                We'll spend 10–15 minutes getting to know your business and what you're trying to accomplish. There's no presentation, no deck — just a real back-and-forth. We'll ask a few questions, you can ask us anything, and by the end you'll have a clear sense of whether we might be the right fit.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-body-2" id="faq-btn-2">
+              Who will I be speaking with?
+              <span class="accordion-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="accordion-body" id="faq-body-2" role="region" aria-labelledby="faq-btn-2">
+              <div class="accordion-body-inner">
+                You'll speak directly with a member of the Rylo Platforms team — not a sales rep or a screener. The person on the call is the same person who would work with you if you move forward, so you'll get an honest and informed perspective from the start.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-body-3" id="faq-btn-3">
+              Is there any pitch or commitment involved?
+              <span class="accordion-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="accordion-body" id="faq-body-3" role="region" aria-labelledby="faq-btn-3">
+              <div class="accordion-body-inner">
+                None. The intro call is genuinely just a conversation. We won't send you a proposal on the call, we won't follow up with aggressive outreach, and there's no obligation of any kind. If we're not the right fit, we'll tell you — and we'll point you in a better direction if we can.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-body-4" id="faq-btn-4">
+              What should I prepare before the call?
+              <span class="accordion-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="accordion-body" id="faq-body-4" role="region" aria-labelledby="faq-btn-4">
+              <div class="accordion-body-inner">
+                Nothing formal. If you have a rough idea of what you're working on and what challenge you're trying to solve, that's all you need. You don't need a brief, a budget number, or a fully formed brief — we're good at asking the right questions to get to what matters.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-body-5" id="faq-btn-5">
+              What kinds of projects does Rylo work with?
+              <span class="accordion-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="accordion-body" id="faq-body-5" role="region" aria-labelledby="faq-btn-5">
+              <div class="accordion-body-inner">
+                We work with teams building software products, internal tools, and technology-driven workflows — typically at the early-to-mid stage where speed and execution quality both matter. Our sweet spot is teams who know what they want to build but need a trusted partner to help them build it well.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 6 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-body-6" id="faq-btn-6">
+              What are the next steps after the call?
+              <span class="accordion-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="accordion-body" id="faq-body-6" role="region" aria-labelledby="faq-btn-6">
+              <div class="accordion-body-inner">
+                If there's a good fit, we'll follow up within 24 hours with a clear outline of how we'd approach your project and what working together would look like. From there, you decide. If the timing isn't right or it's not a match, no awkwardness — we'll part as friends.
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /accordion -->
+
+      </div>
+    </section>
+
   </main>
+
+  <!-- ============================================================
+       JAVASCRIPT — ACCORDION
+  ============================================================ -->
+  <script>
+    /* ----------------------------------------------------------
+       ACCORDION — click to open/close, only one open at a time
+    ---------------------------------------------------------- */
+    document.querySelectorAll('.accordion-trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        const isOpen   = trigger.getAttribute('aria-expanded') === 'true';
+        const bodyId   = trigger.getAttribute('aria-controls');
+        const bodyEl   = document.getElementById(bodyId);
+        const iconEl   = trigger.querySelector('.accordion-icon');
+
+        // Close all others
+        document.querySelectorAll('.accordion-trigger').forEach(function(otherTrigger) {
+          if (otherTrigger !== trigger) {
+            const otherId   = otherTrigger.getAttribute('aria-controls');
+            const otherBody = document.getElementById(otherId);
+            const otherIcon = otherTrigger.querySelector('.accordion-icon');
+            otherTrigger.setAttribute('aria-expanded', 'false');
+            otherBody.classList.remove('open');
+            otherIcon.textContent = '+';
+          }
+        });
+
+        // Toggle current
+        if (isOpen) {
+          trigger.setAttribute('aria-expanded', 'false');
+          bodyEl.classList.remove('open');
+          iconEl.textContent = '+';
+        } else {
+          trigger.setAttribute('aria-expanded', 'true');
+          bodyEl.classList.add('open');
+          iconEl.textContent = '−';
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
