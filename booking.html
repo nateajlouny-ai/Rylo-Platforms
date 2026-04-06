@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book an Intro Call — Rylo Platforms</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg:           #F0F2F5;
+      --surface:      #FFFFFF;
+      --navy:         #0F172A;
+      --blue:         #3B82F6;
+      --blue-light:   #EFF6FF;
+      --blue-mid:     #BFDBFE;
+      --green:        #22C55E;
+      --green-light:  #F0FDF4;
+      --red:          #EF4444;
+      --red-light:    #FEF2F2;
+      --subtext:      #64748B;
+      --border:       #E2E8F0;
+      --border-dark:  #CBD5E1;
+      --disabled-bg:  #F1F5F9;
+      --disabled-txt: #94A3B8;
+      --font:         -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --header-h:     60px;
+      --radius:       12px;
+      --radius-sm:    8px;
+    }
+
+    html, body {
+      min-height: 100%;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--navy);
+      font-family: var(--font);
+      font-size: 1rem;
+      line-height: 1.65;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ============================================================
+       HEADER
+    ============================================================ */
+    header {
+      height: var(--header-h);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 48px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+      text-decoration: none;
+      user-select: none;
+    }
+
+    .logo-blue {
+      color: var(--blue);
+    }
+
+    /* ============================================================
+       PAGE LAYOUT
+    ============================================================ */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: stretch;
+      min-height: calc(100vh - var(--header-h));
+    }
+
+    /* ============================================================
+       LEFT PANEL
+    ============================================================ */
+    .left-panel {
+      flex: 0 0 42%;
+      background: var(--navy);
+      padding: 64px 52px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 100%;
+    }
+
+    /* Badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.30);
+      border-radius: 100px;
+      padding: 6px 14px;
+      margin-bottom: 32px;
+      width: fit-content;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--blue);
+      flex-shrink: 0;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.6; transform: scale(0.8); }
+    }
+
+    .badge-text {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+
+    /* Heading */
+    .left-panel h1 {
+      font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .left-panel .body-copy {
+      font-size: 0.975rem;
+      color: #94A3B8;
+      line-height: 1.8;
+      margin-bottom: 44px;
+      max-width: 400px;
+    }
+
+    /* Feature rows */
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 52px;
+    }
+
+    .feature-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .feature-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .feature-icon svg {
+      width: 16px;
+      height: 16px;
+      color: var(--blue);
+    }
+
+    .feature-text strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.3;
+    }
+
+    .feature-text span {
+      font-size: 0.82rem;
+      color: #64748B;
+    }
+
+    /* Footer line */
+    .left-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 24px;
+    }
+
+    .left-footer p {
+      font-size: 0.8rem;
+      color: #475569;
+      letter-spacing: 0.01em;
+    }
+
+    /* ============================================================
+       RIGHT PANEL
+    ============================================================ */
+    .right-panel {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 56px 48px;
+    }
+
+    .booking-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
+      padding: 40px 40px;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    /* ============================================================
+       STEP INDICATOR
+    ============================================================ */
+    .step-indicator {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 36px;
+    }
+
+    .step-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .step-dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--subtext);
+      transition: all 0.3s ease;
+    }
+
+    .step-dot.active {
+      border-color: var(--blue);
+      background: var(--blue);
+      color: #FFFFFF;
+    }
+
+    .step-dot.done {
+      border-color: var(--green);
+      background: var(--green);
+      color: #FFFFFF;
+      font-size: 0.85rem;
+    }
+
+    .step-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--subtext);
+      white-space: nowrap;
+    }
+
+    .step-label.active {
+      color: var(--blue);
+    }
+
+    .step-label.done {
+      color: var(--green);
+    }
+
+    .step-line {
+      flex: 1;
+      height: 2px;
+      background: var(--border);
+      margin: 0 8px;
+      margin-bottom: 22px;
+      transition: background 0.3s ease;
+    }
+
+    .step-line.done {
+      background: var(--green);
+    }
+
+    /* ============================================================
+       STEP 1 — PICK A TIME
+    ============================================================ */
+    #step1 {}
+
+    .step-heading {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    /* Date grid */
+    .date-grid {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .date-pill {
+      flex: 1;
+      min-width: 68px;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px 6px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+      font-family: var(--font);
+    }
+
+    .date-pill:hover {
+      border-color: var(--blue-mid);
+      background: var(--blue-light);
+    }
+
+    .date-pill.selected {
+      border-color: var(--blue);
+      background: var(--blue-light);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+    }
+
+    .date-pill .day-name {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--subtext);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 2px;
+    }
+
+    .date-pill .day-num {
+      display: block;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.1;
+    }
+
+    .date-pill .month-name {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--subtext);
+      margin-top: 2px;
+    }
+
+    .date-pill.selected .day-name,
+    .date-pill.selected .month-name {
+      color: var(--blue);
+    }
+
+    .date-pill.selected .day-num {
+      color: var(--blue);
+    }
+
+    /* Time slots */
+    .time-section-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--subtext);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .time-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .time-slot {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 9px 4px;
+      text-align: center;
+      cursor: pointer;
+      font-family: var(--font);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy);
+      transition: border-color 0.15s, background 0.15s, color 0.15s, box-shadow 0.15s;
+    }
+
+    .time-slot:hover:not(.disabled) {
+      border-color: var(--blue-mid);
+      background: var(--blue-light);
+      color: var(--blue);
+    }
+
+    .time-slot.selected {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #FFFFFF;
+      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.28);
+    }
+
+    .time-slot.disabled {
+      background: var(--disabled-bg);
+      border-color: var(--border);
+      color: var(--disabled-txt);
+      cursor: not-allowed;
+    }
+
+    .no-slots-msg {
+      font-size: 0.875rem;
+      color: var(--subtext);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    /* Next button */
+    .btn-primary {
+      width: 100%;
+      padding: 14px;
+      background: var(--blue);
+      color: #FFFFFF;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: var(--font);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, opacity 0.2s, transform 0.1s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: #2563EB;
+    }
+
+    .btn-primary:active:not(:disabled) {
+      transform: translateY(1px);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    /* ============================================================
+       STEP 2 — YOUR DETAILS
+    ============================================================ */
+    #step2 {
+      display: none;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: none;
+      font-family: var(--font);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--subtext);
+      cursor: pointer;
+      padding: 0;
+      margin-bottom: 24px;
+      transition: color 0.15s;
+    }
+
+    .back-btn:hover {
+      color: var(--navy);
+    }
+
+    .slot-summary {
+      background: var(--blue-light);
+      border: 1px solid var(--blue-mid);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--blue);
+      margin-bottom: 28px;
+    }
+
+    .details-heading {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: 0.01em;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 11px 14px;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: var(--font);
+      font-size: 0.9rem;
+      color: var(--navy);
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .form-group input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+    }
+
+    .form-group input::placeholder {
+      color: var(--disabled-txt);
+    }
+
+    /* Row form groups have no bottom margin (handled by grid gap) */
+    .form-row .form-group {
+      margin-bottom: 0;
+    }
+
+    /* Spinner */
+    .spinner {
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255, 255, 255, 0.35);
+      border-top-color: #FFFFFF;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: none;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Error box */
+    .error-box {
+      background: var(--red-light);
+      border: 1px solid #FECACA;
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-size: 0.875rem;
+      color: var(--red);
+      margin-top: 14px;
+      display: none;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 900px) {
+      .left-panel {
+        flex: 0 0 38%;
+        padding: 48px 36px;
+      }
+      .right-panel {
+        padding: 48px 32px;
+      }
+      .booking-card {
+        padding: 32px 28px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 0 20px;
+      }
+
+      main {
+        flex-direction: column;
+        min-height: auto;
+      }
+
+      .left-panel {
+        flex: 0 0 auto;
+        padding: 40px 24px;
+        min-height: auto;
+      }
+
+      .right-panel {
+        padding: 32px 20px;
+      }
+
+      .booking-card {
+        padding: 28px 20px;
+        max-width: 100%;
+      }
+
+      .time-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .date-grid {
+        gap: 6px;
+      }
+
+      .date-pill {
+        min-width: 56px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row .form-group {
+        margin-bottom: 0;
+      }
+
+      .time-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER
+  ============================================================ -->
+  <header>
+    <a href="/" style="text-decoration:none;">
+      <span class="logo">Rylo<span class="logo-blue">Platforms</span></span>
+    </a>
+  </header>
+
+  <!-- ============================================================
+       MAIN LAYOUT
+  ============================================================ -->
+  <main>
+
+    <!-- LEFT PANEL -->
+    <aside class="left-panel">
+
+      <!-- Badge -->
+      <div class="badge" aria-label="Intro call">
+        <span class="badge-dot" aria-hidden="true"></span>
+        <span class="badge-text">Intro Call</span>
+      </div>
+
+      <!-- Heading -->
+      <h1>Let's talk. No pitch, no pressure.</h1>
+
+      <!-- Body copy -->
+      <p class="body-copy">
+        A quick 10–15 minute intro call to see if we're the right fit. You'll speak directly with someone from our team — no commitment, no hard sell. Just an honest conversation about what you're building.
+      </p>
+
+      <!-- Feature rows -->
+      <div class="features">
+
+        <!-- Clock icon -->
+        <div class="feature-row">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <strong>15 minutes</strong>
+            <span>A focused, no-filler conversation</span>
+          </div>
+        </div>
+
+        <!-- Checkmark circle icon -->
+        <div class="feature-row">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <strong>No commitment</strong>
+            <span>Walk away anytime — zero pressure</span>
+          </div>
+        </div>
+
+        <!-- Users icon -->
+        <div class="feature-row">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <strong>Real people</strong>
+            <span>You'll talk to our actual team</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <div class="left-footer">
+        <p>Trusted by teams building what's next.</p>
+      </div>
+
+    </aside>
+
+    <!-- RIGHT PANEL -->
+    <section class="right-panel">
+      <div class="booking-card">
+
+        <!-- ── STEP INDICATOR ── -->
+        <div class="step-indicator" aria-label="Booking steps">
+          <div class="step-item">
+            <div class="step-dot active" id="dot1" aria-current="step">1</div>
+            <div class="step-label active" id="label1">Pick a time</div>
+          </div>
+          <div class="step-line" id="step-line"></div>
+          <div class="step-item">
+            <div class="step-dot" id="dot2">2</div>
+            <div class="step-label" id="label2">Your details</div>
+          </div>
+        </div>
+
+        <!-- ============================================================
+             STEP 1: PICK A DATE AND TIME
+        ============================================================ -->
+        <div id="step1">
+          <h2 class="step-heading">Pick a date and time</h2>
+
+          <!-- Date grid (populated by JS) -->
+          <div class="date-grid" id="date-grid" role="group" aria-label="Select a date"></div>
+
+          <!-- Time slots (shown after date selected) -->
+          <div id="time-section" style="display:none;">
+            <div class="time-section-label">Available times</div>
+            <div id="time-grid-container"></div>
+          </div>
+
+          <button class="btn-primary" id="next-btn" disabled aria-disabled="true">
+            Next — Add your details
+          </button>
+        </div>
+
+        <!-- ============================================================
+             STEP 2: YOUR DETAILS
+        ============================================================ -->
+        <div id="step2">
+
+          <button class="back-btn" id="back-btn" aria-label="Back to step 1">
+            <!-- Left arrow -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+            Back
+          </button>
+
+          <!-- Slot summary -->
+          <div class="slot-summary" id="slot-summary" aria-live="polite"></div>
+
+          <h2 class="details-heading">Your details</h2>
+
+          <form id="booking-form" novalidate>
+
+            <!-- First + Last name -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" placeholder="Jane" autocomplete="given-name" required />
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Smith" autocomplete="family-name" required />
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="jane@company.com" autocomplete="email" required />
+            </div>
+
+            <!-- Phone -->
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" autocomplete="tel" />
+            </div>
+
+            <!-- Submit -->
+            <button class="btn-primary" type="submit" id="submit-btn">
+              <span id="btn-label">Book my intro call</span>
+              <span class="spinner" id="spinner" aria-hidden="true"></span>
+            </button>
+
+            <!-- Error box -->
+            <div class="error-box" id="error-box" role="alert" aria-live="assertive"></div>
+
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       JAVASCRIPT — BOOKING LOGIC
+  ============================================================ -->
+  <script>
+    /* ----------------------------------------------------------
+       UTILITY HELPERS
+    ---------------------------------------------------------- */
+    const DAY_NAMES  = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const MONTH_NAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const FULL_DAY_NAMES  = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const FULL_MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+    // Slot hours: 9 AM – 4 PM (9 through 16 inclusive)
+    const SLOT_HOURS = [9,10,11,12,13,14,15,16];
+
+    function formatHour(h) {
+      if (h === 12) return '12:00 PM';
+      if (h > 12)  return (h - 12) + ':00 PM';
+      return h + ':00 AM';
+    }
+
+    // Returns true if the slot on `dateObj` at hour `h` is within 3 hours of now
+    function isSlotDisabled(dateObj, h) {
+      const now = new Date();
+      const slotTime = new Date(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDate(), h, 0, 0, 0);
+      const threeHoursMs = 3 * 60 * 60 * 1000;
+      return slotTime - now < threeHoursMs;
+    }
+
+    /* ----------------------------------------------------------
+       STATE
+    ---------------------------------------------------------- */
+    let selectedDateObj  = null; // Date object
+    let selectedTime     = null; // e.g. "10:00 AM"
+
+    /* ----------------------------------------------------------
+       ELEMENTS
+    ---------------------------------------------------------- */
+    const step1El       = document.getElementById('step1');
+    const step2El       = document.getElementById('step2');
+    const dateGrid      = document.getElementById('date-grid');
+    const timeSection   = document.getElementById('time-section');
+    const timeContainer = document.getElementById('time-grid-container');
+    const nextBtn       = document.getElementById('next-btn');
+    const backBtn       = document.getElementById('back-btn');
+    const slotSummary   = document.getElementById('slot-summary');
+    const bookingForm   = document.getElementById('booking-form');
+    const submitBtn     = document.getElementById('submit-btn');
+    const spinner       = document.getElementById('spinner');
+    const btnLabel      = document.getElementById('btn-label');
+    const errorBox      = document.getElementById('error-box');
+
+    // Step indicator elements
+    const dot1       = document.getElementById('dot1');
+    const dot2       = document.getElementById('dot2');
+    const label1     = document.getElementById('label1');
+    const label2     = document.getElementById('label2');
+    const stepLine   = document.getElementById('step-line');
+
+    /* ----------------------------------------------------------
+       BUILD DATE PILLS (tomorrow through today+5)
+    ---------------------------------------------------------- */
+    (function buildDates() {
+      const today = new Date();
+      today.setHours(0,0,0,0);
+
+      for (let i = 1; i <= 5; i++) {
+        const d = new Date(today);
+        d.setDate(today.getDate() + i);
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'date-pill';
+        btn.setAttribute('aria-label', FULL_DAY_NAMES[d.getDay()] + ', ' + FULL_MONTH_NAMES[d.getMonth()] + ' ' + d.getDate());
+        btn.innerHTML =
+          '<span class="day-name">' + DAY_NAMES[d.getDay()] + '</span>' +
+          '<span class="day-num">'  + d.getDate()            + '</span>' +
+          '<span class="month-name">' + MONTH_NAMES[d.getMonth()] + '</span>';
+
+        btn.addEventListener('click', function() { selectDate(d, btn); });
+        dateGrid.appendChild(btn);
+      }
+    })();
+
+    /* ----------------------------------------------------------
+       SELECT DATE
+    ---------------------------------------------------------- */
+    function selectDate(dateObj, pillEl) {
+      // Deselect previous
+      document.querySelectorAll('.date-pill').forEach(p => p.classList.remove('selected'));
+      pillEl.classList.add('selected');
+
+      selectedDateObj = dateObj;
+      selectedTime    = null;
+
+      buildTimeSlots(dateObj);
+      timeSection.style.display = 'block';
+      updateNextBtn();
+    }
+
+    /* ----------------------------------------------------------
+       BUILD TIME SLOTS
+    ---------------------------------------------------------- */
+    function buildTimeSlots(dateObj) {
+      timeContainer.innerHTML = '';
+
+      const availableSlots = SLOT_HOURS.filter(h => !isSlotDisabled(dateObj, h));
+
+      if (availableSlots.length === 0) {
+        const msg = document.createElement('div');
+        msg.className = 'no-slots-msg';
+        msg.textContent = 'No available times for this date. Please select another day.';
+        timeContainer.appendChild(msg);
+        return;
+      }
+
+      const grid = document.createElement('div');
+      grid.className = 'time-grid';
+      grid.setAttribute('role', 'group');
+      grid.setAttribute('aria-label', 'Select a time');
+
+      SLOT_HOURS.forEach(function(h) {
+        const disabled = isSlotDisabled(dateObj, h);
+        const label    = formatHour(h);
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'time-slot' + (disabled ? ' disabled' : '');
+        btn.textContent = label;
+        btn.disabled    = disabled;
+        btn.setAttribute('aria-label', label + (disabled ? ' — unavailable' : ''));
+
+        if (!disabled) {
+          btn.addEventListener('click', function() { selectTime(label, btn); });
+        }
+
+        grid.appendChild(btn);
+      });
+
+      timeContainer.appendChild(grid);
+    }
+
+    /* ----------------------------------------------------------
+       SELECT TIME
+    ---------------------------------------------------------- */
+    function selectTime(timeLabel, btnEl) {
+      document.querySelectorAll('.time-slot').forEach(b => b.classList.remove('selected'));
+      btnEl.classList.add('selected');
+      selectedTime = timeLabel;
+      updateNextBtn();
+    }
+
+    /* ----------------------------------------------------------
+       NEXT BUTTON STATE
+    ---------------------------------------------------------- */
+    function updateNextBtn() {
+      const ready = selectedDateObj !== null && selectedTime !== null;
+      nextBtn.disabled = !ready;
+      nextBtn.setAttribute('aria-disabled', ready ? 'false' : 'true');
+    }
+
+    /* ----------------------------------------------------------
+       NEXT → STEP 2
+    ---------------------------------------------------------- */
+    nextBtn.addEventListener('click', function() {
+      if (!selectedDateObj || !selectedTime) return;
+
+      // Build friendly summary
+      const dayName   = FULL_DAY_NAMES[selectedDateObj.getDay()];
+      const monthName = FULL_MONTH_NAMES[selectedDateObj.getMonth()];
+      const dayNum    = selectedDateObj.getDate();
+      slotSummary.textContent = 'Your slot: ' + dayName + ', ' + monthName + ' ' + dayNum + ' at ' + selectedTime;
+
+      // Show step 2
+      step1El.style.display = 'none';
+      step2El.style.display = 'block';
+
+      // Update step indicator
+      dot1.className   = 'step-dot done';
+      dot1.textContent = '✓';
+      label1.className = 'step-label done';
+      stepLine.className = 'step-line done';
+      dot2.className   = 'step-dot active';
+      label2.className = 'step-label active';
+    });
+
+    /* ----------------------------------------------------------
+       BACK → STEP 1
+    ---------------------------------------------------------- */
+    backBtn.addEventListener('click', function() {
+      step2El.style.display = 'none';
+      step1El.style.display = 'block';
+
+      // Reset step indicator
+      dot1.className   = 'step-dot active';
+      dot1.textContent = '1';
+      label1.className = 'step-label active';
+      stepLine.className = 'step-line';
+      dot2.className   = 'step-dot';
+      label2.className = 'step-label';
+    });
+
+    /* ----------------------------------------------------------
+       FORM SUBMIT
+    ---------------------------------------------------------- */
+    bookingForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName  = document.getElementById('lastName').value.trim();
+      const email     = document.getElementById('email').value.trim();
+      const phone     = document.getElementById('phone').value.trim();
+
+      // Basic validation
+      if (!firstName || !lastName || !email) {
+        showError('Please fill in your first name, last name, and email address.');
+        return;
+      }
+
+      // Build date/time strings for submission
+      const dayName   = FULL_DAY_NAMES[selectedDateObj.getDay()];
+      const monthName = FULL_MONTH_NAMES[selectedDateObj.getMonth()];
+      const dayNum    = selectedDateObj.getDate();
+      const year      = selectedDateObj.getFullYear();
+      const selectedDate = dayName + ', ' + monthName + ' ' + dayNum + ', ' + year;
+
+      // Loading state
+      setLoading(true);
+      hideError();
+
+      try {
+        const res = await fetch('https://formspree.io/f/xgoplgde', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            firstName,
+            lastName,
+            email,
+            phone,
+            selectedDate,
+            selectedTime,
+            _subject: 'New Intro Call Booking — ' + firstName + ' ' + lastName
+          })
+        });
+
+        if (res.ok) {
+          window.location.href = '/thank-you.html';
+        } else {
+          const data = await res.json().catch(() => ({}));
+          showError(data.error || 'Something went wrong. Please try again or email us directly.');
+          setLoading(false);
+        }
+      } catch (err) {
+        showError('Unable to submit — please check your connection and try again.');
+        setLoading(false);
+      }
+    });
+
+    function setLoading(on) {
+      submitBtn.disabled     = on;
+      spinner.style.display  = on ? 'block' : 'none';
+      btnLabel.textContent   = on ? 'Booking...' : 'Book my intro call';
+    }
+
+    function showError(msg) {
+      errorBox.textContent    = msg;
+      errorBox.style.display  = 'block';
+    }
+
+    function hideError() {
+      errorBox.style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
