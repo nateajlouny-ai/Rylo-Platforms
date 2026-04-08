@@ -12,23 +12,25 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --blue:     #0052D6;
-      --blue-dim: rgba(0, 82, 214, 0.12);
-      --blue-mid: rgba(0, 82, 214, 0.22);
-      --bg:       #06101F;
-      --surface:  #0D1E35;
-      --card:     #0F2340;
-      --border:   rgba(255,255,255,0.08);
-      --text:     #EEF2FF;
-      --sub:      #8CA0BC;
-      --muted:    #4F6480;
-      --header-h: 58px;
+      --accent:     #0052D6;
+      --accent-dim: rgba(0, 82, 214, 0.07);
+      --accent-mid: rgba(0, 82, 214, 0.16);
+      --bg:         #F5F8FF;
+      --surface:    #FFFFFF;
+      --text:       #0B1F3A;
+      --sub:        #5A7192;
+      --muted:      #97AABF;
+      --border:     #DDE6F0;
+      --header-h:   58px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       background: var(--bg);
+      background-image:
+        radial-gradient(circle, rgba(0,82,214,0.07) 1px, transparent 1px);
+      background-size: 28px 28px;
       color: var(--text);
       font-family: 'DM Sans', sans-serif;
       font-size: 1rem;
@@ -36,43 +38,14 @@
       overflow-x: hidden;
     }
 
-    /* ── NOISE TEXTURE OVERLAY ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.4;
-    }
-
-    /* ── AMBIENT GLOW ── */
-    .glow-bg {
-      position: fixed;
-      top: -200px;
-      right: -100px;
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(0,82,214,0.18) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-      animation: drift 12s ease-in-out infinite alternate;
-    }
-
-    @keyframes drift {
-      from { transform: translate(0, 0) scale(1); }
-      to   { transform: translate(-40px, 60px) scale(1.1); }
-    }
-
     /* ── HEADER ── */
     header {
       position: sticky;
       top: 0;
       height: var(--header-h);
-      background: rgba(6, 16, 31, 0.88);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: rgba(245, 248, 255, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
@@ -88,45 +61,41 @@
       letter-spacing: -0.02em;
       color: var(--text);
       text-decoration: none;
-      user-select: none;
     }
 
-    .wordmark em { font-style: normal; color: var(--blue); }
+    .wordmark em { font-style: normal; color: var(--accent); }
 
     .header-cta {
       font-size: 0.83rem;
       font-weight: 600;
       color: #fff;
-      background: var(--blue);
+      background: var(--accent);
       border-radius: 8px;
       padding: 7px 18px;
       text-decoration: none;
       transition: background 0.2s, box-shadow 0.2s;
-      box-shadow: 0 0 18px rgba(0,82,214,0.4);
+      box-shadow: 0 2px 10px rgba(0,82,214,0.28);
     }
 
     .header-cta:hover {
       background: #003EB8;
-      box-shadow: 0 0 28px rgba(0,82,214,0.6);
+      box-shadow: 0 4px 18px rgba(0,82,214,0.4);
     }
 
     /* ── HERO ── */
     .hero {
-      position: relative;
-      z-index: 1;
-      min-height: calc(100vh - var(--header-h));
       display: flex;
       align-items: center;
+      padding: 52px 48px 60px;
+      max-width: 1180px;
+      margin: 0 auto;
     }
 
     .layout {
       width: 100%;
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 52px 48px 60px;
       display: grid;
-      grid-template-columns: 300px 1fr;
-      gap: 56px;
+      grid-template-columns: 280px 1fr;
+      gap: 52px;
       align-items: center;
     }
 
@@ -145,132 +114,131 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--blue);
-      background: var(--blue-dim);
-      border: 1px solid var(--blue-mid);
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-mid);
       border-radius: 100px;
       padding: 5px 12px;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
     .badge-dot {
       width: 5px; height: 5px;
       border-radius: 50%;
-      background: var(--blue);
+      background: var(--accent);
       animation: blink 2s ease-in-out infinite;
     }
 
     @keyframes blink {
-      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,82,214,0.5); }
-      50%       { opacity: 0.4; box-shadow: 0 0 6px 2px rgba(0,82,214,0.3); }
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
     }
 
     .info-panel h1 {
       font-family: 'Sora', sans-serif;
-      font-size: clamp(1.9rem, 2.6vw, 2.7rem);
+      font-size: clamp(1.85rem, 2.5vw, 2.6rem);
       font-weight: 800;
       line-height: 1.1;
       letter-spacing: -0.04em;
-      margin-bottom: 16px;
-      background: linear-gradient(135deg, #FFFFFF 0%, #9BB8FF 100%);
+      margin-bottom: 14px;
+      background: linear-gradient(140deg, var(--text) 20%, var(--accent) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
     .info-panel .subtext {
-      font-size: 0.93rem;
+      font-size: 0.92rem;
       color: var(--sub);
       line-height: 1.75;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
     .divider {
-      width: 32px;
+      width: 28px;
       height: 2px;
-      background: linear-gradient(90deg, var(--blue), transparent);
+      background: linear-gradient(90deg, var(--accent), transparent);
       border-radius: 2px;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
     .props {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      margin-bottom: 28px;
+      gap: 13px;
+      margin-bottom: 26px;
     }
 
     .props li {
       display: flex;
       align-items: center;
-      gap: 11px;
+      gap: 10px;
     }
 
     .prop-icon {
       width: 30px; height: 30px;
       border-radius: 8px;
-      background: var(--blue-dim);
-      border: 1px solid var(--blue-mid);
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-mid);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
     }
 
-    .prop-icon svg { width: 13px; height: 13px; color: #6BA3FF; }
+    .prop-icon svg { width: 13px; height: 13px; color: var(--accent); }
+
+    .prop-text { display: flex; flex-direction: column; }
 
     .prop-label {
-      font-size: 0.88rem;
+      font-size: 0.87rem;
       font-weight: 600;
       color: var(--text);
+      line-height: 1.2;
     }
 
     .prop-desc {
-      font-size: 0.78rem;
+      font-size: 0.77rem;
       color: var(--sub);
       margin-top: 1px;
     }
 
-    .prop-text { display: flex; flex-direction: column; }
-
     .social-proof {
-      font-size: 0.78rem;
+      font-size: 0.77rem;
       color: var(--muted);
-      padding-top: 20px;
+      padding-top: 18px;
       border-top: 1px solid var(--border);
       width: 100%;
     }
 
-    /* ── RIGHT: CALENDAR WRAPPER ── */
+    /* ── RIGHT: BOOKING WIDGET ── */
     .calendar-wrap {
       position: relative;
     }
 
-    /* Glow ring behind calendar */
+    /* Subtle blue glow behind the card */
     .calendar-wrap::before {
       content: '';
       position: absolute;
-      inset: -20px;
-      background: radial-gradient(ellipse at 50% 50%, rgba(0,82,214,0.2) 0%, transparent 70%);
-      border-radius: 24px;
+      inset: -16px;
+      background: radial-gradient(ellipse at 50% 50%, rgba(0,82,214,0.1) 0%, transparent 65%);
+      border-radius: 28px;
       pointer-events: none;
-      z-index: -1;
+      z-index: 0;
     }
 
     #booking-widget {
-      border: 1px solid rgba(0,82,214,0.25);
+      position: relative;
+      z-index: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: 18px;
       overflow: hidden;
-      background: #fff;
       box-shadow:
-        0 0 0 1px rgba(0,82,214,0.1),
-        0 8px 40px rgba(0,0,0,0.5),
-        0 2px 8px rgba(0,0,0,0.3);
-      /* Zoom down to make calendar compact */
-      zoom: 0.72;
-      width: calc(100% / 0.72);
-      max-width: calc(780px / 0.72);
+        0 1px 3px rgba(0,0,0,0.05),
+        0 8px 32px rgba(0,0,0,0.09),
+        0 0 0 1px rgba(0,82,214,0.06);
     }
 
     #booking-widget iframe {
@@ -281,15 +249,14 @@
 
     /* ── TRUST STRIP ── */
     .trust-strip {
-      position: relative;
-      z-index: 1;
       border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
       background: var(--surface);
-      padding: 16px 48px;
+      padding: 14px 48px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 36px;
+      gap: 32px;
       flex-wrap: wrap;
     }
 
@@ -297,7 +264,7 @@
       display: flex;
       align-items: center;
       gap: 7px;
-      font-size: 0.8rem;
+      font-size: 0.79rem;
       color: var(--sub);
       font-weight: 500;
     }
@@ -305,42 +272,39 @@
     .trust-dot {
       width: 5px; height: 5px;
       border-radius: 50%;
-      background: var(--blue);
-      opacity: 0.7;
+      background: var(--accent);
+      opacity: 0.6;
     }
 
     /* ── FAQ ── */
     .faq-section {
-      position: relative;
-      z-index: 1;
-      border-top: 1px solid var(--border);
-      padding: 64px 48px 80px;
+      padding: 60px 48px 76px;
     }
 
-    .faq-inner { max-width: 600px; margin: 0 auto; }
+    .faq-inner { max-width: 580px; margin: 0 auto; }
 
     .faq-eyebrow {
       font-size: 0.67rem;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 8px;
+      color: var(--accent);
+      margin-bottom: 7px;
     }
 
     .faq-section h2 {
       font-family: 'Sora', sans-serif;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: var(--text);
       letter-spacing: -0.02em;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
 
     .faq-list { display: flex; flex-direction: column; }
 
     .faq-item {
-      padding: 20px 0;
+      padding: 18px 0;
       border-bottom: 1px solid var(--border);
     }
 
@@ -348,26 +312,26 @@
 
     .faq-q {
       font-family: 'Sora', sans-serif;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 600;
       color: var(--text);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
     .faq-a {
-      font-size: 0.88rem;
+      font-size: 0.87rem;
       color: var(--sub);
       line-height: 1.7;
     }
 
     .faq-contact {
-      margin-top: 32px;
-      font-size: 0.85rem;
+      margin-top: 28px;
+      font-size: 0.84rem;
       color: var(--sub);
     }
 
     .faq-contact a {
-      color: #6BA3FF;
+      color: var(--accent);
       text-decoration: none;
       font-weight: 600;
     }
@@ -376,15 +340,14 @@
 
     /* ── FOOTER ── */
     .site-footer {
-      position: relative;
-      z-index: 1;
       border-top: 1px solid var(--border);
-      padding: 24px 48px;
+      padding: 22px 48px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
+      background: var(--surface);
     }
 
     .footer-brand {
@@ -395,7 +358,7 @@
       text-decoration: none;
     }
 
-    .footer-brand em { font-style: normal; color: var(--blue); }
+    .footer-brand em { font-style: normal; color: var(--accent); }
 
     .footer-links {
       display: flex;
@@ -404,50 +367,42 @@
     }
 
     .footer-links a {
-      font-size: 0.8rem;
+      font-size: 0.79rem;
       color: var(--sub);
       text-decoration: none;
       transition: color 0.15s;
     }
 
-    .footer-links a:hover { color: #6BA3FF; }
+    .footer-links a:hover { color: var(--accent); }
 
     .footer-copy {
-      font-size: 0.76rem;
+      font-size: 0.75rem;
       color: var(--muted);
       width: 100%;
       text-align: center;
-      padding-top: 12px;
+      padding-top: 10px;
       border-top: 1px solid var(--border);
     }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
-      .layout {
-        grid-template-columns: 1fr;
-        gap: 32px;
-        padding: 40px 28px 48px;
-      }
-      .hero { min-height: auto; }
-      #booking-widget { max-width: 100%; width: calc(100% / 0.72); }
-      .faq-section { padding: 52px 28px 64px; }
-      .trust-strip { padding: 14px 28px; gap: 20px; }
-      .site-footer { padding: 20px 28px; }
+      .hero { padding: 40px 28px 48px; }
+      .layout { grid-template-columns: 1fr; gap: 28px; }
+      .trust-strip { padding: 12px 28px; gap: 16px; }
+      .faq-section { padding: 48px 28px 64px; }
+      .site-footer { padding: 18px 28px; }
     }
 
     @media (max-width: 600px) {
       header { padding: 0 20px; }
-      .layout { padding: 32px 20px 40px; }
-      .faq-section { padding: 40px 20px 56px; }
-      .trust-strip { padding: 12px 20px; gap: 14px; }
-      .site-footer { padding: 18px 20px; flex-direction: column; align-items: flex-start; }
-      #booking-widget { zoom: 0.58; width: calc(100% / 0.58); }
+      .hero { padding: 28px 20px 36px; }
+      .faq-section { padding: 36px 20px 52px; }
+      .trust-strip { padding: 10px 20px; gap: 12px; }
+      .site-footer { padding: 16px 20px; flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
-
-  <div class="glow-bg"></div>
 
   <!-- HEADER -->
   <header>
@@ -456,7 +411,7 @@
   </header>
 
   <!-- HERO -->
-  <section class="hero" aria-label="Booking">
+  <div class="hero">
     <div class="layout">
 
       <!-- LEFT: INFO PANEL -->
@@ -474,7 +429,7 @@
 
         <div class="divider"></div>
 
-        <ul class="props" aria-label="What to expect">
+        <ul class="props">
           <li>
             <span class="prop-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -528,7 +483,7 @@
       </div>
 
     </div>
-  </section>
+  </div>
 
   <!-- TRUST STRIP -->
   <div class="trust-strip">
@@ -539,7 +494,7 @@
   </div>
 
   <!-- FAQ -->
-  <section class="faq-section" aria-label="Frequently asked questions">
+  <section class="faq-section">
     <div class="faq-inner">
       <p class="faq-eyebrow">FAQ</p>
       <h2>A few common questions.</h2>
@@ -586,8 +541,8 @@
         d.type   === 'booking-widget-appointment-booked' ||
         d.event  === 'booking_confirmed' ||
         d.action === 'booking-confirmed' ||
-        s.indexOf('appointmentBooked')    !== -1 ||
-        s.indexOf('booking_confirmed')    !== -1 ||
+        s.indexOf('appointmentBooked')     !== -1 ||
+        s.indexOf('booking_confirmed')     !== -1 ||
         s.indexOf('appointment-confirmed') !== -1
       ) {
         window.location.href = '/thank-you.html';
