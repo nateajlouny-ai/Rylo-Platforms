@@ -94,7 +94,7 @@
     .layout {
       width: 100%;
       display: grid;
-      grid-template-columns: 280px 1fr;
+      grid-template-columns: 280px minmax(0, 500px);
       gap: 52px;
       align-items: center;
     }
@@ -388,6 +388,7 @@
     @media (max-width: 960px) {
       .hero { padding: 40px 28px 48px; }
       .layout { grid-template-columns: 1fr; gap: 28px; }
+      .calendar-wrap { max-width: 460px; margin: 0 auto; width: 100%; }
       .trust-strip { padding: 12px 28px; gap: 16px; }
       .faq-section { padding: 48px 28px 64px; }
       .site-footer { padding: 18px 28px; }
@@ -399,6 +400,7 @@
       .faq-section { padding: 36px 20px 52px; }
       .trust-strip { padding: 10px 20px; gap: 12px; }
       .site-footer { padding: 16px 20px; flex-direction: column; align-items: flex-start; }
+      .calendar-wrap { max-width: 100%; margin: 0; }
     }
   </style>
 </head>
@@ -529,6 +531,19 @@
     </div>
     <p class="footer-copy">&copy; 2026 Rylo Platforms. All rights reserved.</p>
   </footer>
+
+  <script>
+    /* Auto-scroll to booking widget on page load */
+    window.addEventListener('load', function() {
+      var widget = document.getElementById('booking-widget');
+      if (!widget) return;
+      setTimeout(function() {
+        var headerH = 58;
+        var top = widget.getBoundingClientRect().top + window.pageYOffset - headerH - 16;
+        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+      }, 300);
+    });
+  </script>
 
   <script>
     /* GHL booking → redirect to thank-you page */
