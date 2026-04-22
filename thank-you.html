@@ -375,10 +375,18 @@
 </head>
 <body>
 
-  <!-- ============================================================
-       CONVERSION PIXEL — paste Meta/Google tag here
-       This page fires on every confirmed booking
-  ============================================================ -->
+  <!-- Meta Pixel — fires PageView + Schedule on every confirmed booking -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','1438247821148118');
+    fbq('track','PageView');
+    fbq('track','Schedule');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1438247821148118&ev=Schedule&noscript=1"/></noscript>
 
   <!-- ============================================================
        HEADER
