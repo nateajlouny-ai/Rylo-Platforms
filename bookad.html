@@ -226,6 +226,7 @@
     /* ── RIGHT: BOOKING WIDGET ── */
     .calendar-wrap {
       position: relative;
+      zoom: 0.82;
     }
 
     /* Subtle blue glow behind the card */
@@ -399,6 +400,7 @@
     @media (max-width: 960px) {
       .hero { padding: 40px 28px 48px; }
       .layout { grid-template-columns: 1fr; gap: 28px; }
+      .calendar-wrap { zoom: 1; }
       .trust-strip { padding: 12px 28px; gap: 16px; }
       .faq-section { padding: 48px 28px 64px; }
       .site-footer { padding: 18px 28px; }
@@ -558,16 +560,20 @@
     /* GHL booking → redirect to thank-you page */
     window.addEventListener('message', function(e) {
       if (!e.data) return;
-      var d = typeof e.data === 'object' ? e.data : {};
-      var s = typeof e.data === 'string'  ? e.data : '';
+      var d = {};
+      try { d = typeof e.data === 'object' ? e.data : JSON.parse(e.data); } catch(err) {}
+      var s = '';
+      try { s = typeof e.data === 'string' ? e.data : JSON.stringify(e.data); } catch(err) {}
       if (
-        d.action === 'appointmentBooked' ||
-        d.type   === 'booking-widget-appointment-booked' ||
-        d.event  === 'booking_confirmed' ||
-        d.action === 'booking-confirmed' ||
-        s.indexOf('appointmentBooked')     !== -1 ||
-        s.indexOf('booking_confirmed')     !== -1 ||
-        s.indexOf('appointment-confirmed') !== -1
+        d.action  === 'appointmentBooked' ||
+        d.action  === 'booking-confirmed' ||
+        d.type    === 'booking-widget-appointment-booked' ||
+        d.event   === 'booking_confirmed' ||
+        d.msgType === 'booking-widget-appointment-booked' ||
+        s.indexOf('appointmentBooked')                 !== -1 ||
+        s.indexOf('booking-widget-appointment-booked') !== -1 ||
+        s.indexOf('booking_confirmed')                 !== -1 ||
+        s.indexOf('appointment-confirmed')             !== -1
       ) {
         window.location.href = '/thank-you.html';
       }
