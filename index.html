@@ -296,66 +296,6 @@
     /* ===========================================================
        CALENDLY MODAL
        =========================================================== */
-    .calendly-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 10000;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-
-    .calendly-modal.active {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    .modal-content {
-      background: #0B1F3A;
-      border-radius: 12px;
-      border: 1px solid rgba(0, 168, 255, 0.3);
-      padding: 2rem;
-      max-width: 1000px;
-      width: 90%;
-      position: relative;
-      box-shadow: 0 20px 60px rgba(0, 168, 255, 0.2);
-      max-height: 90vh;
-      overflow: hidden;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: transparent;
-      border: none;
-      color: var(--silver);
-      font-size: 2rem;
-      cursor: pointer;
-      z-index: 10;
-      transition: color 0.3s ease;
-      line-height: 1;
-    }
-
-    .modal-close:hover { color: var(--electric); }
-
-    .calendly-embed-container {
-      width: 100%;
-      height: 700px;
-      overflow: hidden;
-      border-radius: 8px;
-    }
-
-    .calendly-embed-container iframe { display: block; }
 
     /* ===========================================================
        SCROLL ANIMATION UTILITY
@@ -1265,10 +1205,7 @@
       .appointment-card { max-width: 100%; }
       .pricing-mock-card { max-width: 100%; }
 
-      .modal-content { padding: 1.2rem; }
-      .calendly-embed-container { height: 500px; }
-
-      .stat-badge { flex-direction: column; text-align: center; gap: 0.3rem; }
+.stat-badge { flex-direction: column; text-align: center; gap: 0.3rem; }
     }
   </style>
 </head>
@@ -1779,62 +1716,19 @@
     <button class="btn-primary cta-button">Book a Consultation Now</button>
   </div>
 
-  <!-- ============================================================
-       CALENDLY MODAL
-       ============================================================ -->
-  <div class="calendly-modal" id="calendlyModal">
-    <div class="modal-content">
-      <button class="modal-close" id="closeModal">&times;</button>
-      <div class="calendly-embed-container">
-        <iframe
-          src="https://calendly.com/ryloplatforms/30min?month=2026-02&embed=true"
-          width="100%"
-          height="700"
-          frameborder="0">
-        </iframe>
-      </div>
-    </div>
-  </div>
 
   <!-- ============================================================
        JAVASCRIPT
        ============================================================ -->
   <script>
     /* -------------------------------------------------------
-       CALENDLY MODAL
+       CTA BUTTONS → book-a-call page
        ------------------------------------------------------- */
-    (function () {
-      var modal   = document.getElementById('calendlyModal');
-      var closeBtn = document.getElementById('closeModal');
-      var allCTAs  = document.querySelectorAll('.cta-button');
-
-      function openModal() {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeModal() {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-
-      allCTAs.forEach(function (btn) {
-        btn.addEventListener('click', function (e) {
-          e.preventDefault();
-          openModal();
-        });
+    document.querySelectorAll('.cta-button').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        window.location.href = '/bookad';
       });
-
-      closeBtn.addEventListener('click', closeModal);
-
-      modal.addEventListener('click', function (e) {
-        if (e.target === modal) closeModal();
-      });
-
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') closeModal();
-      });
-    })();
+    });
 
     /* -------------------------------------------------------
        STICKY BAR — show only after hero section
