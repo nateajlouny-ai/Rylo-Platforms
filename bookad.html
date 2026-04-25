@@ -226,10 +226,8 @@
     /* ── RIGHT: BOOKING WIDGET ── */
     .calendar-wrap {
       position: relative;
-      zoom: 0.82;
     }
 
-    /* Subtle blue glow behind the card */
     .calendar-wrap::before {
       content: '';
       position: absolute;
@@ -246,18 +244,315 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 18px;
-      overflow: hidden;
       box-shadow:
         0 1px 3px rgba(0,0,0,0.05),
         0 8px 32px rgba(0,0,0,0.09),
         0 0 0 1px rgba(0,82,214,0.06);
+      padding: 26px 26px 30px;
     }
 
-    #booking-widget iframe {
+    /* ── STEP PROGRESS ── */
+    .cal-steps {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .cal-step-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--border);
+      transition: background 0.2s, transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .cal-step-dot.active {
+      background: var(--accent);
+      transform: scale(1.2);
+    }
+
+    .cal-step-line {
+      flex: 1;
+      height: 2px;
+      background: var(--border);
+      border-radius: 2px;
+      transition: background 0.25s;
+    }
+
+    .cal-step-line.done { background: var(--accent); }
+
+    /* ── CALENDAR PANEL ── */
+    .cal-panel { display: none; }
+    .cal-panel.active { display: block; }
+
+    .cal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .cal-month-label {
+      font-family: 'Sora', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .cal-nav {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--sub);
+      padding: 0;
+      transition: all 0.15s;
+    }
+
+    .cal-nav:hover:not(:disabled) {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    .cal-nav:disabled { opacity: 0.3; cursor: default; }
+
+    .cal-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      margin-bottom: 4px;
+    }
+
+    .cal-wd {
+      text-align: center;
+      font-size: 0.64rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      padding: 2px 0 5px;
+    }
+
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+    }
+
+    .cal-day {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.83rem;
+      font-weight: 500;
+      border-radius: 8px;
+      cursor: pointer;
+      color: var(--text);
+      border: 1px solid transparent;
+      background: none;
+      padding: 0;
+      transition: all 0.15s;
+      user-select: none;
+    }
+
+    .cal-day:empty,
+    .cal-day.disabled {
+      pointer-events: none;
+      cursor: default;
+    }
+
+    .cal-day.disabled {
+      color: var(--muted);
+      opacity: 0.4;
+    }
+
+    .cal-day:not(.disabled):not(:empty):hover {
+      background: var(--accent-dim);
+      border-color: var(--accent-mid);
+    }
+
+    .cal-day.today:not(.selected) {
+      border-color: var(--accent-mid);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .cal-day.selected {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* ── TIME SLOTS ── */
+    .slots-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin: 15px 0 7px;
+    }
+
+    .slots-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+    }
+
+    .slot-btn {
+      padding: 8px 4px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.79rem;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.15s;
+      text-align: center;
+    }
+
+    .slot-btn:hover {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+      color: var(--accent);
+    }
+
+    .slot-btn.selected {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .no-slots-msg {
+      font-size: 0.83rem;
+      color: var(--sub);
+      padding: 8px 0;
+      grid-column: 1 / -1;
+    }
+
+    /* ── BOOK BUTTON ── */
+    .btn-book {
       display: block;
       width: 100%;
+      margin-top: 16px;
+      padding: 13px;
+      background: var(--accent);
+      color: #fff;
       border: none;
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s, opacity 0.2s;
+      box-shadow: 0 4px 16px rgba(0,82,214,0.28);
+      letter-spacing: -0.01em;
     }
+
+    .btn-book:hover:not(:disabled) {
+      background: #003EB8;
+      box-shadow: 0 6px 22px rgba(0,82,214,0.4);
+    }
+
+    .btn-book:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    /* ── FORM STEP ── */
+    .cal-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--sub);
+      cursor: pointer;
+      padding: 0;
+      margin-bottom: 14px;
+      transition: color 0.15s;
+    }
+
+    .cal-back:hover { color: var(--text); }
+
+    .cal-booking-summary {
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-mid);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    .cal-fields-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .cal-field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .cal-field label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--sub);
+    }
+
+    .cal-field input {
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text);
+      background: var(--surface);
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .cal-field input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0,82,214,0.1);
+    }
+
+    .cal-field input::placeholder { color: var(--muted); }
+
+    .cal-error {
+      margin-top: 10px;
+      padding: 9px 13px;
+      background: #FEF2F2;
+      border: 1px solid #FECACA;
+      border-radius: 8px;
+      font-size: 0.83rem;
+      color: #DC2626;
+      display: none;
+    }
+
+    .cal-error.visible { display: block; }
 
     /* ── TRUST STRIP ── */
     .trust-strip {
@@ -400,10 +695,14 @@
     @media (max-width: 960px) {
       .hero { padding: 40px 28px 48px; }
       .layout { grid-template-columns: 1fr; gap: 28px; }
-      .calendar-wrap { zoom: 1; }
       .trust-strip { padding: 12px 28px; gap: 16px; }
       .faq-section { padding: 48px 28px 64px; }
       .site-footer { padding: 18px 28px; }
+    }
+
+    @media (max-width: 600px) {
+      .cal-fields-row { grid-template-columns: 1fr; }
+      .slots-grid { grid-template-columns: repeat(3, 1fr); }
     }
 
     @media (max-width: 600px) {
@@ -484,14 +783,75 @@
       <!-- RIGHT: BOOKING WIDGET -->
       <div class="calendar-wrap">
         <div id="booking-widget" aria-label="Schedule your call">
-          <iframe
-            src="https://api.leadconnectorhq.com/widget/booking/zDVGSsEAgUKnz0oeOAOp"
-            style="width:100%;border:none;overflow:hidden;"
-            scrolling="no"
-            id="zDVGSsEAgUKnz0oeOAOp_1775612632119"
-            title="Book a strategy call with Rylo Platforms">
-          </iframe>
-          <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
+
+          <!-- Step progress -->
+          <div class="cal-steps">
+            <span class="cal-step-dot active" id="sdot1"></span>
+            <span class="cal-step-line" id="sline"></span>
+            <span class="cal-step-dot" id="sdot2"></span>
+          </div>
+
+          <!-- STEP 1: Calendar + time slots -->
+          <div class="cal-panel active" id="cal-step1">
+            <div class="cal-header">
+              <button class="cal-nav" id="cal-prev" type="button" aria-label="Previous month">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <span class="cal-month-label" id="cal-month-label"></span>
+              <button class="cal-nav" id="cal-next" type="button" aria-label="Next month">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+            <div class="cal-weekdays">
+              <div class="cal-wd">Su</div>
+              <div class="cal-wd">Mo</div>
+              <div class="cal-wd">Tu</div>
+              <div class="cal-wd">We</div>
+              <div class="cal-wd">Th</div>
+              <div class="cal-wd">Fr</div>
+              <div class="cal-wd">Sa</div>
+            </div>
+            <div class="cal-grid" id="cal-grid"></div>
+            <div id="slots-section" style="display:none">
+              <p class="slots-label">Available Times</p>
+              <div class="slots-grid" id="slots-grid"></div>
+            </div>
+            <button class="btn-book" id="btn-continue" type="button" disabled>Continue &rarr;</button>
+          </div>
+
+          <!-- STEP 2: Contact form -->
+          <div class="cal-panel" id="cal-step2">
+            <button class="cal-back" id="btn-back" type="button">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+              Back
+            </button>
+            <div class="cal-booking-summary" id="cal-summary"></div>
+            <form id="booking-form" novalidate>
+              <div class="cal-fields-row">
+                <div class="cal-field">
+                  <label for="firstName">First Name</label>
+                  <input type="text" id="firstName" name="firstName" required autocomplete="given-name" placeholder="Jane">
+                </div>
+                <div class="cal-field">
+                  <label for="lastName">Last Name</label>
+                  <input type="text" id="lastName" name="lastName" required autocomplete="family-name" placeholder="Smith">
+                </div>
+              </div>
+              <div class="cal-fields-row">
+                <div class="cal-field">
+                  <label for="phone">Phone</label>
+                  <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="(555) 000-0000">
+                </div>
+                <div class="cal-field">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" required autocomplete="email" placeholder="jane@example.com">
+                </div>
+              </div>
+              <div class="cal-error" id="cal-error"></div>
+              <button class="btn-book" id="btn-submit" type="submit">Book My Call</button>
+            </form>
+          </div>
+
         </div>
       </div>
 
@@ -544,40 +904,199 @@
   </footer>
 
   <script>
-    /* Auto-scroll to booking widget on page load */
-    window.addEventListener('load', function() {
-      var widget = document.getElementById('booking-widget');
-      if (!widget) return;
-      setTimeout(function() {
-        var headerH = 58;
-        var top = widget.getBoundingClientRect().top + window.pageYOffset - headerH - 16;
-        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
-      }, 300);
-    });
-  </script>
+    (function() {
+      var MONTHS = ['January','February','March','April','May','June',
+                    'July','August','September','October','November','December'];
+      var DAYS   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
-  <script>
-    /* GHL booking → redirect to thank-you page */
-    window.addEventListener('message', function(e) {
-      if (!e.data) return;
-      var d = {};
-      try { d = typeof e.data === 'object' ? e.data : JSON.parse(e.data); } catch(err) {}
-      var s = '';
-      try { s = typeof e.data === 'string' ? e.data : JSON.stringify(e.data); } catch(err) {}
-      if (
-        d.action  === 'appointmentBooked' ||
-        d.action  === 'booking-confirmed' ||
-        d.type    === 'booking-widget-appointment-booked' ||
-        d.event   === 'booking_confirmed' ||
-        d.msgType === 'booking-widget-appointment-booked' ||
-        s.indexOf('appointmentBooked')                 !== -1 ||
-        s.indexOf('booking-widget-appointment-booked') !== -1 ||
-        s.indexOf('booking_confirmed')                 !== -1 ||
-        s.indexOf('appointment-confirmed')             !== -1
-      ) {
-        window.location.href = '/thank-you.html';
+      var now     = new Date();
+      var today   = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      var curYear = today.getFullYear();
+      var curMonth = today.getMonth();
+
+      var selectedDate = null;
+      var selectedSlot = null;
+
+      function renderCalendar() {
+        document.getElementById('cal-month-label').textContent = MONTHS[curMonth] + ' ' + curYear;
+
+        var grid      = document.getElementById('cal-grid');
+        grid.innerHTML = '';
+
+        var firstDay    = new Date(curYear, curMonth, 1).getDay();
+        var daysInMonth = new Date(curYear, curMonth + 1, 0).getDate();
+
+        for (var i = 0; i < firstDay; i++) {
+          var blank = document.createElement('button');
+          blank.className = 'cal-day';
+          blank.disabled  = true;
+          grid.appendChild(blank);
+        }
+
+        for (var d = 1; d <= daysInMonth; d++) {
+          var cell = document.createElement('button');
+          cell.className = 'cal-day';
+          cell.type      = 'button';
+          cell.textContent = d;
+
+          var date = new Date(curYear, curMonth, d);
+          var dow  = date.getDay();
+
+          if (dow === 0 || dow === 6 || date < today) {
+            cell.classList.add('disabled');
+            cell.disabled = true;
+          } else {
+            if (date.getTime() === today.getTime()) cell.classList.add('today');
+            if (selectedDate && date.getTime() === selectedDate.getTime()) cell.classList.add('selected');
+            cell.addEventListener('click', makeSelectDate(date));
+          }
+
+          grid.appendChild(cell);
+        }
+
+        var isCurrentMonth = curYear === today.getFullYear() && curMonth === today.getMonth();
+        document.getElementById('cal-prev').disabled = isCurrentMonth;
       }
-    });
+
+      function makeSelectDate(date) {
+        return function() {
+          selectedDate = date;
+          selectedSlot = null;
+          renderCalendar();
+          renderSlots();
+          updateContinue();
+        };
+      }
+
+      function renderSlots() {
+        var section = document.getElementById('slots-section');
+        var grid    = document.getElementById('slots-grid');
+
+        if (!selectedDate) { section.style.display = 'none'; return; }
+
+        section.style.display = 'block';
+        grid.innerHTML = '';
+
+        var cutoff  = new Date(now.getTime() + 3 * 60 * 60 * 1000);
+        var isToday = selectedDate.getTime() === today.getTime();
+        var shown   = 0;
+
+        for (var h = 9; h <= 16; h++) {
+          var slotTime = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate(), h, 0, 0, 0);
+          if (isToday && slotTime <= cutoff) continue;
+
+          shown++;
+          var label = h < 12 ? h + ':00 AM' : (h === 12 ? '12:00 PM' : (h - 12) + ':00 PM');
+          var btn   = document.createElement('button');
+          btn.className   = 'slot-btn';
+          btn.type        = 'button';
+          btn.textContent = label;
+          if (selectedSlot !== null && selectedSlot === h) btn.classList.add('selected');
+          btn.addEventListener('click', makeSelectSlot(h));
+          grid.appendChild(btn);
+        }
+
+        if (shown === 0) {
+          var msg = document.createElement('p');
+          msg.className   = 'no-slots-msg';
+          msg.textContent = 'No slots available for this date. Please pick another day.';
+          grid.appendChild(msg);
+        }
+      }
+
+      function makeSelectSlot(h) {
+        return function() {
+          selectedSlot = h;
+          renderSlots();
+          updateContinue();
+        };
+      }
+
+      function updateContinue() {
+        document.getElementById('btn-continue').disabled = !(selectedDate && selectedSlot !== null);
+      }
+
+      function fmtDate(d) {
+        return DAYS[d.getDay()] + ', ' + MONTHS[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+      }
+
+      function fmtSlot(h) {
+        if (h < 12)  return h + ':00 AM';
+        if (h === 12) return '12:00 PM';
+        return (h - 12) + ':00 PM';
+      }
+
+      document.getElementById('cal-prev').addEventListener('click', function() {
+        curMonth--;
+        if (curMonth < 0) { curMonth = 11; curYear--; }
+        renderCalendar();
+      });
+
+      document.getElementById('cal-next').addEventListener('click', function() {
+        curMonth++;
+        if (curMonth > 11) { curMonth = 0; curYear++; }
+        renderCalendar();
+      });
+
+      document.getElementById('btn-continue').addEventListener('click', function() {
+        if (!selectedDate || selectedSlot === null) return;
+        document.getElementById('cal-step1').classList.remove('active');
+        document.getElementById('cal-step2').classList.add('active');
+        document.getElementById('cal-summary').textContent = fmtDate(selectedDate) + ' at ' + fmtSlot(selectedSlot);
+        document.getElementById('sdot1').classList.remove('active');
+        document.getElementById('sline').classList.add('done');
+        document.getElementById('sdot2').classList.add('active');
+      });
+
+      document.getElementById('btn-back').addEventListener('click', function() {
+        document.getElementById('cal-step2').classList.remove('active');
+        document.getElementById('cal-step1').classList.add('active');
+        document.getElementById('sdot2').classList.remove('active');
+        document.getElementById('sline').classList.remove('done');
+        document.getElementById('sdot1').classList.add('active');
+      });
+
+      document.getElementById('booking-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var form      = this;
+        var submitBtn = document.getElementById('btn-submit');
+        var errorEl   = document.getElementById('cal-error');
+
+        errorEl.classList.remove('visible');
+        submitBtn.disabled    = true;
+        submitBtn.textContent = 'Booking...';
+
+        fetch('https://formspree.io/f/xgoplgde', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            firstName:    form.firstName.value.trim(),
+            lastName:     form.lastName.value.trim(),
+            phone:        form.phone.value.trim(),
+            email:        form.email.value.trim(),
+            selectedDate: fmtDate(selectedDate),
+            selectedTime: fmtSlot(selectedSlot),
+            _subject:     'New Booking — ' + form.firstName.value.trim() + ' ' + form.lastName.value.trim()
+          })
+        })
+        .then(function(r) { return r.json().then(function(data) { return { ok: r.ok, data: data }; }); })
+        .then(function(res) {
+          if (res.ok) {
+            window.location.href = '/thank-you.html';
+          } else {
+            throw new Error(res.data && res.data.error ? res.data.error : 'Submission failed. Please try again.');
+          }
+        })
+        .catch(function(err) {
+          errorEl.textContent = err.message || 'Something went wrong. Please try again.';
+          errorEl.classList.add('visible');
+          submitBtn.disabled    = false;
+          submitBtn.textContent = 'Book My Call';
+        });
+      });
+
+      renderCalendar();
+    })();
   </script>
 
 </body>
