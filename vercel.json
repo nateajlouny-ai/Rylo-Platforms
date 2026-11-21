@@ -1,19 +1,54 @@
 {
   "cleanUrls": true,
   "redirects": [
-    { "source": "/bookad", "destination": "/book", "permanent": true },
-    { "source": "/book-ad", "destination": "/book", "permanent": true },
-    { "source": "/booking", "destination": "/book", "permanent": true },
-    { "source": "/privacy-policy", "destination": "/privacy", "permanent": true },
-    { "source": "/terms-of-service", "destination": "/terms", "permanent": true },
-    { "source": "/tos", "destination": "/terms", "permanent": true }
+    {
+      "source": "/bookad",
+      "destination": "/book",
+      "permanent": true
+    },
+    {
+      "source": "/book-ad",
+      "destination": "/book",
+      "permanent": true
+    },
+    {
+      "source": "/booking",
+      "destination": "/book",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/terms-of-service",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/tos",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/thank-you",
+      "destination": "/next-steps",
+      "permanent": true
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "Content-Security-Policy", "value": "upgrade-insecure-requests" },
-        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains" }
+        {
+          "key": "Content-Security-Policy",
+          "value": "upgrade-insecure-requests"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains"
+        }
       ]
     }
   ]
