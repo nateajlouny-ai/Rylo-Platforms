@@ -4,75 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book a Call — Rylo Platforms</title>
-  <meta name="description" content="Book a strategy call with Rylo Platforms to learn how we book qualified consultations onto your calendar.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="robots" content="noindex">
+  <!-- /book forwards to the booking URL defined once in /booking.js -->
+  <script src="/booking.js"></script>
+  <script>window.location.replace(BOOKING_URL);</script>
   <link rel="stylesheet" href="/site.css">
-
-  <!-- Meta Pixel — PageView (carried over from the old booking page) -->
-  <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-    document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init','1438247821148118');
-    fbq('track','PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1438247821148118&ev=PageView&noscript=1"></noscript>
 </head>
 <body class="rp">
-
-  <header class="rp-header">
-    <div class="rp-container wide">
-      <a href="/" class="rp-logo">
-        <img src="https://i.imgur.com/97muSNQ.jpeg" alt="Rylo Platforms logo">
-        <span>Rylo Platforms</span>
-      </a>
-      <nav>
-        <a href="/" class="rp-hide-sm">Home</a>
-        <a href="/book" class="rp-btn">Book a Call</a>
-      </nav>
-    </div>
-  </header>
-
   <main class="rp-main">
     <div class="rp-container">
-      <h1>Book Your Strategy Call</h1>
-      <p class="rp-intro">Pick a time that works for you. We'll talk about your trade, your service area, and how Rylo Platforms runs your campaigns, builds your CRM and automations, and books qualified consultations onto your calendar.</p>
-
-      <!-- LeadConnector booking calendar.
-           NOTE: The chat widget is intentionally NOT loaded on this page, because
-           this calendar collects phone numbers / SMS consent. -->
-      <div class="rp-calendar">
-        <iframe src="https://api.leadconnectorhq.com/widget/booking/Zh1Qe6Bh8UEWPYElT5A0" allow="payment" style="width: 100%;border:none;overflow: hidden;" scrolling="no" id="Zh1Qe6Bh8UEWPYElT5A0_1795289247248"></iframe><br><script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
-      </div>
-
-      <p style="margin-top:1.5rem; font-size:0.9rem; color:var(--rp-bluegray);">
-        Prefer to reach us directly? Call <a href="tel:+19255050350">+1 (925) 505-0350</a> or email <a href="mailto:info@ryloplatforms.com">info@ryloplatforms.com</a>.
-        See our <a href="/privacy">Privacy Policy</a> and <a href="/terms">Terms of Service</a>.
-      </p>
+      <p>Taking you to our booking calendar&hellip;</p>
+      <noscript><p>Please enable JavaScript to open our booking calendar, or email <a href="mailto:info@ryloplatforms.com">info@ryloplatforms.com</a>.</p></noscript>
     </div>
   </main>
-
-  <footer class="rylo-footer">
-    <div class="rf-inner">
-      <address>
-        <strong>Rylo Platforms</strong><br>
-        7062 Kalmia Hills Ct, Dublin, CA 94568<br>
-        Phone: <a href="tel:+19255050350">+1 (925) 505-0350</a><br>
-        Email: <a href="mailto:info@ryloplatforms.com">info@ryloplatforms.com</a>
-      </address>
-      <nav class="rf-links" aria-label="Footer">
-        <a href="/">Home</a>
-        <a href="/book">Book a Call</a>
-        <a href="/privacy">Privacy Policy</a>
-        <a href="/terms">Terms of Service</a>
-      </nav>
-    </div>
-    <div class="rf-bottom">&copy; 2026 Rylo Platforms. All rights reserved.</div>
-  </footer>
-
 </body>
 </html>

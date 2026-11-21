@@ -1,4 +1,4 @@
-/* Shared styles for Rylo Platforms secondary pages (/book, /privacy, /terms, 404). */
+/* Shared styles for Rylo Platforms secondary pages (/next-steps, /privacy, /terms, 404). */
 :root {
   --rp-black:    #000000;
   --rp-midnight: #0B1F3A;
@@ -57,12 +57,6 @@ body.rp a:hover { color: #5cc8ff; }
 .rp-highlight p:last-child { margin-bottom: 0; }
 .rp-main address { font-style: normal; }
 
-/* Booking calendar card */
-.rp-calendar {
-  background: #fff; border-radius: 14px; padding: 0.5rem; margin-top: 2rem;
-  box-shadow: 0 10px 40px rgba(0, 168, 255, 0.12);
-}
-.rp-calendar iframe { display: block; min-height: 640px; } /* avoids a collapsed box before form_embed.js resizes it */
 
 /* Footer (used on every page, including the homepage-style pages) */
 .rylo-footer {
@@ -77,3 +71,10 @@ body.rp a:hover { color: #5cc8ff; }
 .rylo-footer a:hover { color: var(--rp-electric); }
 .rylo-footer .rf-links { display: flex; flex-direction: column; gap: 0.2rem; }
 .rylo-footer .rf-bottom { max-width: 1100px; margin: 1.5rem auto 0; padding: 1.25rem 1.5rem 0; border-top: 1px solid var(--rp-border); text-align: center; font-size: 0.85rem; }
+
+/* Next steps */
+.rp-steps { list-style: none; margin: 2rem 0 !important; padding: 0; display: flex; flex-direction: column; gap: 1rem; }
+.rp-steps li { display: flex; gap: 1.1rem; align-items: flex-start; background: var(--rp-card); border: 1px solid var(--rp-border); border-radius: 12px; padding: 1.25rem 1.4rem; margin: 0 !important; }
+.rp-step-num { flex-shrink: 0; width: 2.2rem; height: 2.2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--rp-steel), var(--rp-electric)); color: #fff; font-family: 'Sora', sans-serif; font-weight: 700; }
+.rp-steps h2 { margin: 0 0 0.25rem !important; font-size: 1.1rem !important; }
+.rp-steps p { margin: 0 !important; }
